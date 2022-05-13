@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
     }
 
     //MARK: Interaction Methods
@@ -28,23 +27,14 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signUpButtonPressed(_ sender: Any) {
-
+        let registerViewController = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
+        self.present(registerViewController, animated:true, completion:nil)
     }
 
-    func setup() {
-        addShadowTo(button: loginButton)
-        addShadowTo(button: loginWithFacebookButton)
-    }
+}
 
-    func addShadowTo(button: UIButton) {
+//MARK: - UITextFieldDelegate
 
-//        button.tintColor = .primaryBlue
-//        button.layer.shadowColor = UIColor(red: 0.008, green: 0.702, blue: 0.894, alpha: 0.53).cgColor
-//        button.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        button.layer.shadowOpacity = 1
-//        button.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        button.layer.shadowRadius = 11
-//        button.layer.masksToBounds = false
-//        button.layer.bounds = button.bounds
-    }
+extension LoginViewController: UITextFieldDelegate {
+
 }

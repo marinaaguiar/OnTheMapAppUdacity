@@ -16,6 +16,8 @@
 		9CBB7442282E694B0082BE18 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7441282E694B0082BE18 /* Colors.swift */; };
 		9CBB7446282E87930082BE18 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7445282E87930082BE18 /* BlueButton.swift */; };
 		9CBB7448282E89600082BE18 /* LightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7447282E89600082BE18 /* LightButton.swift */; };
+		9CBB744B282E91B40082BE18 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744A282E91B40082BE18 /* Field.swift */; };
+		9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		9CBB7441282E694B0082BE18 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		9CBB7445282E87930082BE18 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
 		9CBB7447282E89600082BE18 /* LightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightButton.swift; sourceTree = "<group>"; };
+		9CBB744A282E91B40082BE18 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +68,6 @@
 			children = (
 				9CBB743A282E67F60082BE18 /* Sources */,
 				9CBB743B282E67FC0082BE18 /* Resources */,
-				9CBB7437282E5EAB0082BE18 /* LoginViewController.swift */,
 				9CBB7429282D89C90082BE18 /* Main.storyboard */,
 			);
 			path = OnTheMapAppUdacity;
@@ -117,6 +120,7 @@
 		9CBB743F282E68900082BE18 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9CBB7449282E906C0082BE18 /* ViewControllers */,
 				9CBB7440282E693E0082BE18 /* View */,
 			);
 			path = Scenes;
@@ -128,8 +132,18 @@
 				9CBB7441282E694B0082BE18 /* Colors.swift */,
 				9CBB7445282E87930082BE18 /* BlueButton.swift */,
 				9CBB7447282E89600082BE18 /* LightButton.swift */,
+				9CBB744A282E91B40082BE18 /* Field.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9CBB7449282E906C0082BE18 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB7437282E5EAB0082BE18 /* LoginViewController.swift */,
+				9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +220,10 @@
 				9CBB7448282E89600082BE18 /* LightButton.swift in Sources */,
 				9CBB7446282E87930082BE18 /* BlueButton.swift in Sources */,
 				9CBB7438282E5EAB0082BE18 /* LoginViewController.swift in Sources */,
+				9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
 				9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */,
+				9CBB744B282E91B40082BE18 /* Field.swift in Sources */,
 				9CBB7426282D89C90082BE18 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

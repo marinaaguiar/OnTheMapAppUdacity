@@ -19,7 +19,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Fl9-Iz-IbU">
                                 <rect key="frame" x="20" y="366" width="350" height="314"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Md-Bp-sLe">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Md-Bp-sLe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -28,7 +28,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-uB-Cxe">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-uB-Cxe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="66" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="83.705357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="XSw-sh-DdZ">
             <objects>
-                <viewController id="Hku-EV-BVL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="Hku-EV-BVL" customClass="RegisterViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MAl-uC-drL">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -173,7 +173,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hGW-ev-seA">
                                 <rect key="frame" x="20" y="325" width="350" height="248"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jaG-S3-kjg">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jaG-S3-kjg" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -182,7 +182,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yRj-h8-I4R">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yRj-h8-I4R" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="66" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -191,7 +191,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fgu-DW-L47">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fgu-DW-L47" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="132" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -200,7 +200,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-Bu-A6k">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-Bu-A6k" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="198" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -223,6 +223,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="register" cornerStyle="large">
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="registerButtonPressed:" destination="Hku-EV-BVL" eventType="touchUpInside" id="lAB-4y-5mB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -250,6 +253,13 @@
                             <constraint firstItem="Rvh-8Y-b8V" firstAttribute="trailing" secondItem="BIw-SZ-EVL" secondAttribute="trailing" constant="20" id="qvu-2C-Li5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dCX-kh-0aR"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="fgu-DW-L47" id="Fb2-gQ-Q3q"/>
+                        <outlet property="firstNameTextField" destination="jaG-S3-kjg" id="IJv-Tt-PCh"/>
+                        <outlet property="lastNameTextField" destination="yRj-h8-I4R" id="9Uj-0j-Bl6"/>
+                        <outlet property="passwordTextField" destination="tdH-Bu-A6k" id="Ryi-Gx-mVe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SAK-Cd-ckS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
