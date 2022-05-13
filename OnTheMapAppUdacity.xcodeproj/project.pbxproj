@@ -18,6 +18,9 @@
 		9CBB7448282E89600082BE18 /* LightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7447282E89600082BE18 /* LightButton.swift */; };
 		9CBB744B282E91B40082BE18 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744A282E91B40082BE18 /* Field.swift */; };
 		9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */; };
+		9CBB7452282E9D730082BE18 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7451282E9D730082BE18 /* User.swift */; };
+		9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7454282EB0F80082BE18 /* LoginRequest.swift */; };
+		9CBB7457282EC70F0082BE18 /* PostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7456282EC70F0082BE18 /* PostSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		9CBB7447282E89600082BE18 /* LightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightButton.swift; sourceTree = "<group>"; };
 		9CBB744A282E91B40082BE18 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9CBB7451282E9D730082BE18 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9CBB7454282EB0F80082BE18 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		9CBB7456282EC70F0082BE18 /* PostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +126,9 @@
 		9CBB743F282E68900082BE18 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9CBB7449282E906C0082BE18 /* ViewControllers */,
+				9CBB7453282EB0E50082BE18 /* APIResponse */,
+				9CBB7450282E9C530082BE18 /* Model */,
+				9CBB7449282E906C0082BE18 /* Controllers */,
 				9CBB7440282E693E0082BE18 /* View */,
 			);
 			path = Scenes;
@@ -137,13 +145,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		9CBB7449282E906C0082BE18 /* ViewControllers */ = {
+		9CBB7449282E906C0082BE18 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				9CBB7437282E5EAB0082BE18 /* LoginViewController.swift */,
 				9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9CBB7450282E9C530082BE18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB7451282E9D730082BE18 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9CBB7453282EB0E50082BE18 /* APIResponse */ = {
+			isa = PBXGroup;
+			children = (
+				9CBB7454282EB0F80082BE18 /* LoginRequest.swift */,
+				9CBB7456282EC70F0082BE18 /* PostSession.swift */,
+			);
+			path = APIResponse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +245,11 @@
 				9CBB7448282E89600082BE18 /* LightButton.swift in Sources */,
 				9CBB7446282E87930082BE18 /* BlueButton.swift in Sources */,
 				9CBB7438282E5EAB0082BE18 /* LoginViewController.swift in Sources */,
+				9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */,
 				9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */,
+				9CBB7457282EC70F0082BE18 /* PostSession.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
+				9CBB7452282E9D730082BE18 /* User.swift in Sources */,
 				9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */,
 				9CBB744B282E91B40082BE18 /* Field.swift in Sources */,
 				9CBB7426282D89C90082BE18 /* SceneDelegate.swift in Sources */,
