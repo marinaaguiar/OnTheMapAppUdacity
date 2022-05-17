@@ -25,6 +25,7 @@
 		9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA722833D601007EB5BF /* MapViewController.swift */; };
 		9CBBAA752833DFF4007EB5BF /* StudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */; };
 		9CBBAA772833F71D007EB5BF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA762833F71D007EB5BF /* ListViewController.swift */; };
+		9CBBAA792834044A007EB5BF /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA782834044A007EB5BF /* ListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		9CBBAA722833D601007EB5BF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResponse.swift; sourceTree = "<group>"; };
 		9CBBAA762833F71D007EB5BF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		9CBBAA782834044A007EB5BF /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */,
 				9CBBAA722833D601007EB5BF /* MapViewController.swift */,
 				9CBBAA762833F71D007EB5BF /* ListViewController.swift */,
+				9CBBAA782834044A007EB5BF /* ListTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
 				9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */,
+				9CBBAA792834044A007EB5BF /* ListTableViewCell.swift in Sources */,
 				9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */,
 				9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */,
 				9CBB744B282E91B40082BE18 /* Field.swift in Sources */,

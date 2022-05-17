@@ -13,7 +13,7 @@ struct StudentResults: Codable {
 
 struct StudentLocation: Codable {
     let createdAt: String?
-    let firstName: String?
+    let firstName: String
     let lastName: String
     let latitude: Double
     let longitude: Double

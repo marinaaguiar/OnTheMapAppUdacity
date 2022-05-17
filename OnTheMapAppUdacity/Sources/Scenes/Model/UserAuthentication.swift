@@ -118,6 +118,7 @@ class UserAuthentication {
     }
 
     class func getStudentsLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
+        print(Endpoints.getUsersLocation.url)
         get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
