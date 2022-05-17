@@ -18,9 +18,9 @@
 		9CBB7448282E89600082BE18 /* LightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7447282E89600082BE18 /* LightButton.swift */; };
 		9CBB744B282E91B40082BE18 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744A282E91B40082BE18 /* Field.swift */; };
 		9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */; };
-		9CBB7452282E9D730082BE18 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7451282E9D730082BE18 /* User.swift */; };
+		9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7451282E9D730082BE18 /* UserAuthentication.swift */; };
 		9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7454282EB0F80082BE18 /* LoginRequest.swift */; };
-		9CBB7457282EC70F0082BE18 /* PostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7456282EC70F0082BE18 /* PostSession.swift */; };
+		9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7456282EC70F0082BE18 /* LoginResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +37,9 @@
 		9CBB7447282E89600082BE18 /* LightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightButton.swift; sourceTree = "<group>"; };
 		9CBB744A282E91B40082BE18 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		9CBB7451282E9D730082BE18 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9CBB7451282E9D730082BE18 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		9CBB7454282EB0F80082BE18 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		9CBB7456282EC70F0082BE18 /* PostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSession.swift; sourceTree = "<group>"; };
+		9CBB7456282EC70F0082BE18 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,7 @@
 		9CBB7450282E9C530082BE18 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9CBB7451282E9D730082BE18 /* User.swift */,
+				9CBB7451282E9D730082BE18 /* UserAuthentication.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				9CBB7454282EB0F80082BE18 /* LoginRequest.swift */,
-				9CBB7456282EC70F0082BE18 /* PostSession.swift */,
+				9CBB7456282EC70F0082BE18 /* LoginResponse.swift */,
 			);
 			path = APIResponse;
 			sourceTree = "<group>";
@@ -247,9 +247,9 @@
 				9CBB7438282E5EAB0082BE18 /* LoginViewController.swift in Sources */,
 				9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */,
 				9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */,
-				9CBB7457282EC70F0082BE18 /* PostSession.swift in Sources */,
+				9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
-				9CBB7452282E9D730082BE18 /* User.swift in Sources */,
+				9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */,
 				9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */,
 				9CBB744B282E91B40082BE18 /* Field.swift in Sources */,
 				9CBB7426282D89C90082BE18 /* SceneDelegate.swift in Sources */,

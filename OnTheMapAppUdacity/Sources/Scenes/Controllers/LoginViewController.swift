@@ -15,12 +15,14 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(UserAuthentication.Endpoints.login.url)
     }
 
     //MARK: Interaction Methods
 
     @IBAction func loginButtonPressed(_ sender: Any) {
-        UserAuthentication.createSessionId(username: emailTextField.text!, password: passwordTextField.text!, completion: handleSessionResponse(success:error:))
+
+        UserAuthentication.login(username: emailTextField.text!, password: passwordTextField.text!, completion: handleSessionResponse(success:error:))
     }
 
     @IBAction func loginWithFacebookButtonPressed(_ sender: Any) {
@@ -30,14 +32,6 @@ class LoginViewController: UIViewController {
         let registerViewController = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
         self.present(registerViewController, animated:true, completion:nil)
     }
-
-//    func handleLoginResponse(success: Bool, error: Error?) {
-//        if success {
-//            UserAuthentication.createSessionId(username: emailTextField.text!, password: passwordTextField.text!, completion: handleSessionResponse(success:error:))
-//        } else {
-//            showLoginFailure(message: error?.localizedDescription ?? "")
-//        }
-//    }
 
 
     func handleSessionResponse(success: Bool, error: Error?) {
@@ -57,6 +51,6 @@ class LoginViewController: UIViewController {
 
 //MARK: - UITextFieldDelegate
 
-extension LoginViewController: UITextFieldDelegate {
-
-}
+//extension LoginViewController: UITextFieldDelegate {
+//
+//}

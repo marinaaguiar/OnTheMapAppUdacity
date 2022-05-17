@@ -4,41 +4,42 @@ import Foundation
 class UserAuthentication {
 
     struct Auth {
+        static var registered: Bool = false
         static var sessionId = ""
+    }
+
+    enum ApiError: Error {
+        case unknownError
     }
 
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
 
-
         case login
-        case createSessionId
 
         var stringValue: String {
             switch self {
-            case .createSessionId:
-                return Endpoints.base + "/session"
             case .login:
-                return Endpoints.base
+                return Endpoints.base + "/session"
             }
         }
-
         var url: URL {
             return URL(string: stringValue)!
         }
     }
 
-
-    class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
-
+    class func post<RequestType: Encodable, ResponseType: Decodable>(
+        url: URL,
+        responseType: ResponseType.Type,
+        body: RequestType,
+        completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.httpBody = try! JSONEncoder().encode(body)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try! JSONEncoder().encode(body)
-        let session = URLSession.shared
 
-        let task = session.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -49,13 +50,15 @@ class UserAuthentication {
             do {
                 let range = 5..<data.count
                 let newData = data.subdata(in: range)
+                print(String(data: newData, encoding: .utf8))
+
                 let responseObject = try decoder.decode(ResponseType.self, from: newData)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
-                    print(responseObject)
                 }
             } catch {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [data, response, error] in
+                    print(response)
                     completion(nil, error)
                 }
             }
@@ -63,18 +66,24 @@ class UserAuthentication {
         task.resume()
     }
 
+    class func login(
+        username: String,
+        password: String,
+        completion: @escaping (Bool, Error?) -> Void) {
 
-    class func createSessionId(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let body = LoginRequest(username: username, password: password)
-        taskForPOSTRequest(url: Endpoints.createSessionId.url, responseType: SessionResponse.self, body: body) { response, error in
+            post(url: Endpoints.login.url, responseType: LoginResponse.self, body: body) { response, error in
             if let response = response {
-                Auth.sessionId = response.id
+                print(response.account.registered)
+                Auth.registered = response.account.registered
                 completion(true, nil)
             } else {
-                completion(false, nil)
+                print(error?.localizedDescription)
+                completion(false, error)
             }
         }
     }
+
 }
 
 
