@@ -21,6 +21,10 @@
 		9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7451282E9D730082BE18 /* UserAuthentication.swift */; };
 		9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7454282EB0F80082BE18 /* LoginRequest.swift */; };
 		9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7456282EC70F0082BE18 /* LoginResponse.swift */; };
+		9CBBAA702833AB02007EB5BF /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBBAA6F2833AB02007EB5BF /* FacebookLogin */; };
+		9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA722833D601007EB5BF /* MapViewController.swift */; };
+		9CBBAA752833DFF4007EB5BF /* StudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */; };
+		9CBBAA772833F71D007EB5BF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA762833F71D007EB5BF /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		9CBB7451282E9D730082BE18 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		9CBB7454282EB0F80082BE18 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		9CBB7456282EC70F0082BE18 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		9CBBAA712833B010007EB5BF /* OnTheMapAppUdacity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnTheMapAppUdacity.entitlements; sourceTree = "<group>"; };
+		9CBBAA722833D601007EB5BF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResponse.swift; sourceTree = "<group>"; };
+		9CBBAA762833F71D007EB5BF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBBAA702833AB02007EB5BF /* FacebookLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,7 @@
 		9CBB7422282D89C90082BE18 /* OnTheMapAppUdacity */ = {
 			isa = PBXGroup;
 			children = (
+				9CBBAA712833B010007EB5BF /* OnTheMapAppUdacity.entitlements */,
 				9CBB743A282E67F60082BE18 /* Sources */,
 				9CBB743B282E67FC0082BE18 /* Resources */,
 				9CBB7429282D89C90082BE18 /* Main.storyboard */,
@@ -150,6 +160,8 @@
 			children = (
 				9CBB7437282E5EAB0082BE18 /* LoginViewController.swift */,
 				9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */,
+				9CBBAA722833D601007EB5BF /* MapViewController.swift */,
+				9CBBAA762833F71D007EB5BF /* ListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -167,6 +179,7 @@
 			children = (
 				9CBB7454282EB0F80082BE18 /* LoginRequest.swift */,
 				9CBB7456282EC70F0082BE18 /* LoginResponse.swift */,
+				9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */,
 			);
 			path = APIResponse;
 			sourceTree = "<group>";
@@ -187,6 +200,9 @@
 			dependencies = (
 			);
 			name = OnTheMapAppUdacity;
+			packageProductDependencies = (
+				9CBBAA6F2833AB02007EB5BF /* FacebookLogin */,
+			);
 			productName = OnTheMapAppUdacity;
 			productReference = 9CBB7420282D89C90082BE18 /* OnTheMapAppUdacity.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +231,9 @@
 				Base,
 			);
 			mainGroup = 9CBB7417282D89C90082BE18;
+			packageReferences = (
+				9CBBAA6E2833AB02007EB5BF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 9CBB7421282D89C90082BE18 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,13 +261,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CBBAA752833DFF4007EB5BF /* StudentLocationResponse.swift in Sources */,
 				9CBB7448282E89600082BE18 /* LightButton.swift in Sources */,
 				9CBB7446282E87930082BE18 /* BlueButton.swift in Sources */,
 				9CBB7438282E5EAB0082BE18 /* LoginViewController.swift in Sources */,
 				9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */,
 				9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */,
+				9CBBAA772833F71D007EB5BF /* ListViewController.swift in Sources */,
 				9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
+				9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */,
 				9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */,
 				9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */,
 				9CBB744B282E91B40082BE18 /* Field.swift in Sources */,
@@ -397,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OnTheMapAppUdacity/OnTheMapAppUdacity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DSYB3VSYU2;
@@ -425,6 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = OnTheMapAppUdacity/OnTheMapAppUdacity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DSYB3VSYU2;
@@ -470,6 +494,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9CBBAA6E2833AB02007EB5BF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 13.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9CBBAA6F2833AB02007EB5BF /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CBBAA6E2833AB02007EB5BF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9CBB7418282D89C90082BE18 /* Project object */;
 }

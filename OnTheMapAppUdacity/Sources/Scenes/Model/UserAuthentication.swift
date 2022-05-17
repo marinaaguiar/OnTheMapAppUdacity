@@ -16,11 +16,14 @@ class UserAuthentication {
         static let base = "https://onthemap-api.udacity.com/v1"
 
         case login
+        case getUsersLocation
 
         var stringValue: String {
             switch self {
             case .login:
                 return Endpoints.base + "/session"
+            case .getUsersLocation:
+                return Endpoints.base + "/StudentLocation"
             }
         }
         var url: URL {
@@ -66,6 +69,36 @@ class UserAuthentication {
         task.resume()
     }
 
+    class func get<ResponseType: Decodable>(
+        url: URL,
+        responseType: ResponseType.Type,
+        completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+
+        return task
+    }
+
+
     class func login(
         username: String,
         password: String,
@@ -83,6 +116,18 @@ class UserAuthentication {
             }
         }
     }
+
+    class func getStudentsLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
+        get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
+            if let response = response {
+                completion(response.results, nil)
+            } else {
+                print(error.debugDescription)
+                completion([], error)
+            }
+        }
+    }
+
 
 }
 
