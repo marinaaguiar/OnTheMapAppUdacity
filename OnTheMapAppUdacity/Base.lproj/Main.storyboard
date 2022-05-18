@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fik-B2-vNW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -287,7 +288,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4X-oV-W2Y">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-gN-2Q8">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationGray" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-gN-2Q8">
                                                             <rect key="frame" x="16" y="17" width="30" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="Z3D-tR-9XL"/>
@@ -338,7 +339,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Np1-K6-IEJ">
-                        <barButtonItem key="leftBarButtonItem" image="Add Location Icon" id="Wsb-5z-ryi">
+                        <barButtonItem key="leftBarButtonItem" image="add-location-1" id="Wsb-5z-ryi">
                             <connections>
                                 <action selector="addLocationButtonPressed:" destination="M3T-oA-amx" id="4wB-MY-BUt"/>
                             </connections>
@@ -381,7 +382,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="TPa-Ec-Mbe">
-                        <barButtonItem key="leftBarButtonItem" image="Add Location Icon" id="XNh-mt-Vh9">
+                        <barButtonItem key="leftBarButtonItem" image="add-location-1" id="XNh-mt-Vh9">
                             <connections>
                                 <action selector="addLocationButtonPressed:" destination="qK0-IN-qri" id="RTe-lO-uST"/>
                             </connections>
@@ -419,10 +420,10 @@
             </objects>
             <point key="canvasLocation" x="1763" y="77"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Location View Controller-->
         <scene sceneID="2Kl-mm-2gh">
             <objects>
-                <viewController id="BU5-hg-e6R" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationViewController" id="BU5-hg-e6R" customClass="AddLocationViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="07z-PX-6Rz">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -449,9 +450,10 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PS2-ed-6K4" secondAttribute="trailing" id="3K4-iT-zEX"/>
                                     <constraint firstItem="PS2-ed-6K4" firstAttribute="leading" secondItem="Ytb-Rv-PDQ" secondAttribute="leading" id="cLX-KD-MeC"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="wIl-jb-Dme"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZt-JF-KQQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZt-JF-KQQ" customClass="BlueButton" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                 <rect key="frame" x="20" y="680" width="350" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="MZ5-tI-FMW"/>
@@ -461,6 +463,9 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="findOnTheMapButton:" destination="BU5-hg-e6R" eventType="touchUpInside" id="ZFI-l2-S2H"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oik-fR-tpa"/>
@@ -470,22 +475,31 @@
                             <constraint firstItem="Oik-fR-tpa" firstAttribute="trailing" secondItem="cZt-JF-KQQ" secondAttribute="trailing" constant="20" id="5AI-5k-1eO"/>
                             <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="leading" secondItem="Oik-fR-tpa" secondAttribute="leading" constant="20" id="7sg-2Z-ZIp"/>
                             <constraint firstItem="Oik-fR-tpa" firstAttribute="trailing" secondItem="Ytb-Rv-PDQ" secondAttribute="trailing" constant="20" id="7uJ-XM-VLl"/>
+                            <constraint firstItem="cZt-JF-KQQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ytb-Rv-PDQ" secondAttribute="bottom" constant="238" id="Ctf-nJ-YSO"/>
+                            <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="top" secondItem="Oik-fR-tpa" secondAttribute="top" constant="254" id="FMs-EN-kbh"/>
                             <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="centerY" secondItem="07z-PX-6Rz" secondAttribute="centerY" constant="-30" id="O5j-uB-RkG"/>
                             <constraint firstItem="cZt-JF-KQQ" firstAttribute="leading" secondItem="Oik-fR-tpa" secondAttribute="leading" constant="20" id="vBj-2R-GaR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t0v-Iz-4IV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="4rW-Xb-bCv"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="4rW-Xb-bCv">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="BU5-hg-e6R" id="QTQ-3n-VeO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="locationTextField" destination="PS2-ed-6K4" id="RrT-8h-RAh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcP-WI-Tdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5674" y="76"/>
         </scene>
-        <!--View Controller-->
+        <!--Find Location View Controller-->
         <scene sceneID="032-GY-cfv">
             <objects>
-                <viewController id="erD-BR-s6D" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindLocationViewController" id="erD-BR-s6D" customClass="FindLocationViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bxm-bi-8jk">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -493,7 +507,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Gv2-RG-XNI">
                                 <rect key="frame" x="0.0" y="178" width="390" height="666"/>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your location here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DN9-j0-HSZ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a link to share here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DN9-j0-HSZ">
                                 <rect key="frame" x="20" y="108" width="350" height="50"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -502,16 +516,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcb-a7-cSC" customClass="LightButton" customModule="OnTheMapAppUdacity" customModuleProvider="target">
+                                <rect key="frame" x="20" y="680" width="350" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="esG-Ig-hK6"/>
+                                </constraints>
+                                <color key="tintColor" red="0.90201083100000001" green="0.8976532907" blue="0.90636837120000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="submit">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                    <color key="baseForegroundColor" name="ColorPrimaryBlue"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mdz-pv-fyI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DN9-j0-HSZ" firstAttribute="top" secondItem="mdz-pv-fyI" secondAttribute="top" constant="20" id="9ga-9B-hBi"/>
+                            <constraint firstItem="lcb-a7-cSC" firstAttribute="leading" secondItem="mdz-pv-fyI" secondAttribute="leading" constant="20" id="ETX-nu-gce"/>
                             <constraint firstAttribute="bottom" secondItem="Gv2-RG-XNI" secondAttribute="bottom" id="Edc-ml-3Wy"/>
                             <constraint firstItem="Gv2-RG-XNI" firstAttribute="top" secondItem="DN9-j0-HSZ" secondAttribute="bottom" constant="20" id="Fcn-aA-CzV"/>
                             <constraint firstItem="DN9-j0-HSZ" firstAttribute="leading" secondItem="mdz-pv-fyI" secondAttribute="leading" constant="20" id="Mog-Ia-Jt4"/>
                             <constraint firstItem="mdz-pv-fyI" firstAttribute="trailing" secondItem="DN9-j0-HSZ" secondAttribute="trailing" constant="20" id="Qe7-GB-pY6"/>
                             <constraint firstItem="Gv2-RG-XNI" firstAttribute="trailing" secondItem="mdz-pv-fyI" secondAttribute="trailing" id="Xgm-9n-kAm"/>
+                            <constraint firstItem="mdz-pv-fyI" firstAttribute="bottom" secondItem="lcb-a7-cSC" secondAttribute="bottom" constant="80" id="k82-el-aXl"/>
+                            <constraint firstItem="mdz-pv-fyI" firstAttribute="trailing" secondItem="lcb-a7-cSC" secondAttribute="trailing" constant="20" id="r7w-wE-b4F"/>
                             <constraint firstItem="Gv2-RG-XNI" firstAttribute="leading" secondItem="mdz-pv-fyI" secondAttribute="leading" id="uHy-t8-ez3"/>
                         </constraints>
                     </view>
@@ -519,6 +548,9 @@
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="daE-tv-u8Y"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="linkTextField" destination="DN9-j0-HSZ" id="hx6-Jo-Gvd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5E-gH-FFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -560,11 +592,11 @@
             </objects>
             <point key="canvasLocation" x="6605" y="77"/>
         </scene>
-        <!--Map-->
+        <!--Navigation Controller-->
         <scene sceneID="Pim-jj-s1K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R74-wN-7T5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="7Rf-eo-jPW"/>
+                    <tabBarItem key="tabBarItem" title="" image="map" catalog="system" id="7Rf-eo-jPW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3kG-rF-Dcc">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -579,11 +611,11 @@
             </objects>
             <point key="canvasLocation" x="2666" y="-291"/>
         </scene>
-        <!--List-->
+        <!--Navigation Controller-->
         <scene sceneID="sWX-Fv-75P">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YKz-QU-b7L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" image="list.dash" catalog="system" id="Rgz-Yo-R1a"/>
+                    <tabBarItem key="tabBarItem" title="" image="list.dash" catalog="system" id="Rgz-Yo-R1a"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9kH-ga-22g">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -600,14 +632,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add Location Icon" width="25" height="34"/>
+        <image name="add-location-1" width="30" height="35"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="fb-logo" width="28" height="28"/>
         <image name="line" width="141" height="1"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="location" width="22" height="30"/>
+        <image name="locationGray" width="22" height="29"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="udacity" width="2500" height="2500"/>
+        <namedColor name="ColorPrimaryBlue">
+            <color red="0.0080000003799796104" green="0.70200002193450928" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
