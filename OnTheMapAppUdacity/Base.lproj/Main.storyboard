@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fik-B2-vNW">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -395,6 +395,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addLocationButton" destination="XNh-mt-Vh9" id="LH1-CH-oaq"/>
+                        <outlet property="mapView" destination="hOV-kW-b4G" id="SK1-r7-8DC"/>
                         <outlet property="reloadButton" destination="d5Y-zi-AQW" id="IFr-as-Mvq"/>
                     </connections>
                 </viewController>
@@ -467,6 +468,11 @@
                                     <action selector="findOnTheMapButton:" destination="BU5-hg-e6R" eventType="touchUpInside" id="ZFI-l2-S2H"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1iI-2O-rGY">
+                                <rect key="frame" x="0.0" y="488" width="390" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oik-fR-tpa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -494,7 +500,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcP-WI-Tdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5674" y="76"/>
+            <point key="canvasLocation" x="5673.8461538461534" y="75.355450236966817"/>
         </scene>
         <!--Find Location View Controller-->
         <scene sceneID="032-GY-cfv">
@@ -527,10 +533,20 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
                                     <color key="baseForegroundColor" name="ColorPrimaryBlue"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="erD-BR-s6D" eventType="touchUpInside" id="1XG-nn-CwY"/>
+                                </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-Pin" translatesAutoresizingMaskIntoConstraints="NO" id="stp-mC-gxm">
+                                <rect key="frame" x="180" y="457" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Xvp-Cw-2rj"/>
+                                    <constraint firstAttribute="width" constant="50" id="hmm-z0-Bff"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mdz-pv-fyI"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="ColorPrimaryBlue"/>
                         <constraints>
                             <constraint firstItem="DN9-j0-HSZ" firstAttribute="top" secondItem="mdz-pv-fyI" secondAttribute="top" constant="20" id="9ga-9B-hBi"/>
                             <constraint firstItem="lcb-a7-cSC" firstAttribute="leading" secondItem="mdz-pv-fyI" secondAttribute="leading" constant="20" id="ETX-nu-gce"/>
@@ -539,17 +555,25 @@
                             <constraint firstItem="DN9-j0-HSZ" firstAttribute="leading" secondItem="mdz-pv-fyI" secondAttribute="leading" constant="20" id="Mog-Ia-Jt4"/>
                             <constraint firstItem="mdz-pv-fyI" firstAttribute="trailing" secondItem="DN9-j0-HSZ" secondAttribute="trailing" constant="20" id="Qe7-GB-pY6"/>
                             <constraint firstItem="Gv2-RG-XNI" firstAttribute="trailing" secondItem="mdz-pv-fyI" secondAttribute="trailing" id="Xgm-9n-kAm"/>
+                            <constraint firstItem="stp-mC-gxm" firstAttribute="centerX" secondItem="bxm-bi-8jk" secondAttribute="centerX" constant="10" id="jcL-Wq-B5P"/>
                             <constraint firstItem="mdz-pv-fyI" firstAttribute="bottom" secondItem="lcb-a7-cSC" secondAttribute="bottom" constant="80" id="k82-el-aXl"/>
                             <constraint firstItem="mdz-pv-fyI" firstAttribute="trailing" secondItem="lcb-a7-cSC" secondAttribute="trailing" constant="20" id="r7w-wE-b4F"/>
+                            <constraint firstItem="stp-mC-gxm" firstAttribute="centerY" secondItem="bxm-bi-8jk" secondAttribute="centerY" constant="60" id="rqM-VE-yIj"/>
                             <constraint firstItem="Gv2-RG-XNI" firstAttribute="leading" secondItem="mdz-pv-fyI" secondAttribute="leading" id="uHy-t8-ez3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4WG-hA-wml">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="daE-tv-u8Y"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="daE-tv-u8Y">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="erD-BR-s6D" id="yh1-V2-sUF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="linkTextField" destination="DN9-j0-HSZ" id="hx6-Jo-Gvd"/>
+                        <outlet property="mapView" destination="Gv2-RG-XNI" id="hDG-eB-M77"/>
+                        <outlet property="submitButton" destination="lcb-a7-cSC" id="S9o-N4-J2U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J5E-gH-FFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -632,6 +656,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon-Pin" width="25" height="47"/>
         <image name="add-location-1" width="30" height="35"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="fb-logo" width="28" height="28"/>

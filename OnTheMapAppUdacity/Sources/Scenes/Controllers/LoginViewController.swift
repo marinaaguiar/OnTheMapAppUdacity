@@ -60,7 +60,6 @@ class LoginViewController: UIViewController {
 
     func handleSessionResponse(success: Bool, error: Error?) {
         if success {
-
             presentMapViewController()
             print("success")
 

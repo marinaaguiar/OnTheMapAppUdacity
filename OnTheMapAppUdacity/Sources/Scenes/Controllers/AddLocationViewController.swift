@@ -9,7 +9,11 @@ import UIKit
 
 class AddLocationViewController: UIViewController {
 
+    //MARK: Outlets
+
     @IBOutlet weak var locationTextField: UITextField!
+
+    //MARK: Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +22,10 @@ class AddLocationViewController: UIViewController {
 
     }
 
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+    //MARK: Interaction Methods
 
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        navigationController?.popToRootViewController(animated: true)
     }
 
     @IBAction func findOnTheMapButton(_ sender: UIButton) {
