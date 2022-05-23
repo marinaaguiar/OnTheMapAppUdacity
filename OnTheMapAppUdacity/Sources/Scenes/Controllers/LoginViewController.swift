@@ -75,8 +75,9 @@ class LoginViewController: UIViewController {
     }
 
     func presentMapViewController() {
-        let mapViewController = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        self.present(mapViewController, animated:true, completion:nil)
+        let uiTabBarViewController = storyboard?.instantiateViewController(withIdentifier: "UITabBarViewController")
+        uiTabBarViewController!.modalPresentationStyle = .fullScreen
+        self.present(uiTabBarViewController!, animated:true, completion:nil)
     }
 }
 

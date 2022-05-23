@@ -29,12 +29,11 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
-
         UserAuthentication.getStudentsLocation { results, error in
             self.results = results
             self.populateTheMap(results: results)

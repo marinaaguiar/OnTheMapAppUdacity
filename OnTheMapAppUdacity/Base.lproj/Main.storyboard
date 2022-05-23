@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fik-B2-vNW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -406,7 +406,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2uG-lk-EaS">
             <objects>
-                <tabBarController id="Fik-B2-vNW" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UITabBarViewController" id="Fik-B2-vNW" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cFR-Os-Ml2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -468,11 +468,6 @@
                                     <action selector="findOnTheMapButton:" destination="BU5-hg-e6R" eventType="touchUpInside" id="ZFI-l2-S2H"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1iI-2O-rGY">
-                                <rect key="frame" x="0.0" y="488" width="390" height="174"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oik-fR-tpa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -656,7 +651,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-Pin" width="25" height="47"/>
+        <image name="Icon-Pin" width="15" height="35"/>
         <image name="add-location-1" width="30" height="35"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="fb-logo" width="28" height="28"/>

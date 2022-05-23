@@ -50,6 +50,36 @@ class FindLocationViewController: UIViewController {
 
     //MARK: Methods
 
+//    func createNewLocation() {
+//        let newStudentLocation = StudentLocation(
+//            createdAt: "",
+//            firstName: "", // I need to insert the first name of the student session
+//            lastName: "",  // I need to insert the last name of the student session
+//            latitude: mapView.centerCoordinate.latitude,
+//            longitude: mapView.centerCoordinate.longitude,
+//            mapString: "",
+//            mediaURL: linkTextField.text!,
+//            objectId: "",
+//            uniqueKey: "",
+//            updatedAt: "")
+//
+//    }
+//
+//
+//    class func addNewStudentLocation(objectId: String, latitude: String, longitude: String, completion: @escaping (Bool, Error?) -> Void) {
+//        let body = StudentLocation(createdAt: <#T##String?#>, firstName: <#T##String#>, lastName: <#T##String#>, latitude: <#T##Double#>, longitude: <#T##Double#>, mapString: <#T##String#>, mediaURL: <#T##String#>, objectId: <#T##String#>, uniqueKey: <#T##String#>, updatedAt: <#T##String#>)
+//
+//        MarkFavorite(mediaType: "movie", mediaId: movieId, favorite: favorite)
+//        taskForPOSTRequest(url: Endpoints.markFavorite.url, responseType: TMDBResponse.self, body: body) { response, error in
+//            if let response = response {
+//                completion(response.statusCode == 1 || response.statusCode == 12 || response.statusCode == 13, nil)
+//            } else {
+//                completion(false, nil)
+//            }
+//        }
+//    }
+
+
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()

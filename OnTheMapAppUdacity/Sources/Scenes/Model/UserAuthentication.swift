@@ -2,7 +2,6 @@
 import Foundation
 
 class UserAuthentication {
-
     struct Auth {
         static var registered: Bool = false
         static var sessionId = ""
@@ -31,6 +30,15 @@ class UserAuthentication {
         }
     }
 
+    static var session: URLSession {
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.httpAdditionalHeaders = [
+            "User-Agent": "dev.alecrim.test/1.0"
+        ]
+
+        return URLSession(configuration: sessionConfig)
+    }
+
     class func post<RequestType: Encodable, ResponseType: Decodable>(
         url: URL,
         responseType: ResponseType.Type,
@@ -42,7 +50,7 @@ class UserAuthentication {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -74,7 +82,7 @@ class UserAuthentication {
         responseType: ResponseType.Type,
         completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
 
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -128,6 +136,20 @@ class UserAuthentication {
             }
         }
     }
+
+//    class func createNewStudentLocation(completion: @escaping () -> Void ) {
+//        let post =
+//    }
+//
+//    class func downloadPosterImage(path: String, completion: @escaping (Data?, Error?) -> Void) {
+//        let task = URLSession.shared.dataTask(with: Endpoints.posterImage(path).url) { data, response, error in
+//            DispatchQueue.main.async {
+//                completion(data, error)
+//            }
+//        }
+//        task.resume()
+//    }
+
 
 
 }
