@@ -1,3 +1,9 @@
+//
+//  LViewController.swift
+//  OnTheMapAppUdacity
+//
+//  Created by Marina Aguiar on 5/24/22.
+//
 
 import Foundation
 import UIKit
@@ -19,11 +25,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
+//        emailTextField.delegate = self
+//        passwordTextField.delegate = self
 
         if let token = AccessToken.current,
-            !token.isExpired {
+           !token.isExpired {
             // User is logged in, do work such as go to next view controller.
         }
 
@@ -34,8 +40,15 @@ class LoginViewController: UIViewController {
     //MARK: Interaction Methods
 
     @IBAction func loginButtonPressed(_ sender: Any) {
-
-        UserAuthentication.login(username: emailTextField.text!, password: passwordTextField.text!, completion: handleSessionResponse(success:error:))
+        do {
+            try validateLogin()
+        } catch LoginErrors.incompleteForm {
+            Alert.showBasics(title: "Incomplete Form", message: "Please fill out both email and password fields", vc: self)
+        } catch LoginErrors.invalidEmail {
+            Alert.showBasics(title: "Invalid Email Format", message: "Please make sure you format your email correctly", vc: self)
+        } catch {
+            Alert.showBasics(title: "Invalid Credentials", message: "The user name or password are incorrect", vc: self)
+        }
     }
 
     @IBAction func loginWithFacebookButtonPressed(_ sender: Any) {
@@ -64,14 +77,8 @@ class LoginViewController: UIViewController {
             print("success")
 
         } else {
-            showLoginFailure(message: error?.localizedDescription ?? "")
+            Alert.showBasics(title: "Login Failed", message: "\(error?.localizedDescription)", vc: self)
         }
-    }
-
-    func showLoginFailure(message: String) {
-        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
     }
 
     func presentMapViewController() {
@@ -79,18 +86,35 @@ class LoginViewController: UIViewController {
         uiTabBarViewController!.modalPresentationStyle = .fullScreen
         self.present(uiTabBarViewController!, animated:true, completion:nil)
     }
+
+    func validateLogin() throws {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            if email.isEmpty || password.isEmpty {
+                throw LoginErrors.incompleteForm
+            }
+            if !email.isValidEmail {
+                throw LoginErrors.invalidEmail
+            }
+            if password.count < 8 {
+                throw LoginErrors.weakPassword
+            }
+            else {
+                UserAuthentication.login(username: email, password: password, completion: handleSessionResponse(success:error:))
+            }
+        }
+    }
 }
 
-extension LoginViewController: LoginButtonDelegate {
-
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        //
-    }
-
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        //
-    }
-}
+//extension LoginViewController: LoginButtonDelegate {
+//
+//    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+//        //
+//    }
+//
+//    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+//        //
+//    }
+//}
 
 
 //MARK: - UITextFieldDelegate
@@ -121,4 +145,6 @@ extension LoginViewController: UITextFieldDelegate {
         }
     }
 }
+
+
 

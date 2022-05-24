@@ -32,6 +32,26 @@ class RegisterViewController: UIViewController {
 
     }
 
+    //MARK: Methods
+
+    func register() throws {
+
+        if let email = emailTextField.text, let password = passwordTextField.text, let firstName = firstNameTextField.text, let lastName = lastNameTextField.text {
+            if email.isEmpty || password.isEmpty || firstName.isEmpty || lastName.isEmpty {
+                throw LoginErrors.incompleteForm
+            }
+            if !email.isValidEmail {
+                throw LoginErrors.invalidEmail
+            }
+            if password.count < 8 {
+                throw LoginErrors.weakPassword
+            }
+            else {
+//                UserAuthentication.register(username: email, password: password, firstName: firstName, lastName: lastName, completion: handleSessionResponse(success:error:))
+            }
+        }
+    }
+
 }
 
 extension RegisterViewController: UITextFieldDelegate {

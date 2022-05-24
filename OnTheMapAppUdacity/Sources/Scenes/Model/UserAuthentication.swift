@@ -61,7 +61,7 @@ class UserAuthentication {
             do {
                 let range = 5..<data.count
                 let newData = data.subdata(in: range)
-                print(String(data: newData, encoding: .utf8))
+                print(String(data: newData, encoding: .utf8)!)
 
                 let responseObject = try decoder.decode(ResponseType.self, from: newData)
                 DispatchQueue.main.async {
@@ -69,7 +69,7 @@ class UserAuthentication {
                 }
             } catch {
                 DispatchQueue.main.async { [data, response, error] in
-                    print(response)
+                    print(response!)
                     completion(nil, error)
                 }
             }
