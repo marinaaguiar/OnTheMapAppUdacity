@@ -18,6 +18,9 @@ class FindLocationViewController: UIViewController {
     let regionInMeters: Double = 10000
     let pin = MKPointAnnotation()
 
+    var results: [StudentLocation] = []
+    var mediaUrl = ""
+
     //MARK: Outlets
 
     @IBOutlet weak var linkTextField: UITextField!
@@ -28,6 +31,7 @@ class FindLocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         linkTextField.delegate = self
     }
 
@@ -39,9 +43,13 @@ class FindLocationViewController: UIViewController {
     //MARK: Interaction Methods
 
     @IBAction func submitButtonPressed(_ sender: Any) {
-        addLocationPin()
-        // ADD INFORMATIONS TO [STUDENTELOCATION]
-        navigationController?.popToRootViewController(animated: true)
+
+        if UserAuthentication.Auth.latitude == 0.0 && UserAuthentication.Auth.longitude == 0.0 {
+            addNewStudentLocation()
+        } else {
+            replaceStudentLocation()
+        }
+
     }
 
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -50,35 +58,29 @@ class FindLocationViewController: UIViewController {
 
     //MARK: Methods
 
-//    func createNewLocation() {
-//        let newStudentLocation = StudentLocation(
-//            createdAt: "",
-//            firstName: "", // I need to insert the first name of the student session
-//            lastName: "",  // I need to insert the last name of the student session
-//            latitude: mapView.centerCoordinate.latitude,
-//            longitude: mapView.centerCoordinate.longitude,
-//            mapString: "",
-//            mediaURL: linkTextField.text!,
-//            objectId: "",
-//            uniqueKey: "",
-//            updatedAt: "")
-//
-//    }
-//
-//
-//    class func addNewStudentLocation(objectId: String, latitude: String, longitude: String, completion: @escaping (Bool, Error?) -> Void) {
-//        let body = StudentLocation(createdAt: <#T##String?#>, firstName: <#T##String#>, lastName: <#T##String#>, latitude: <#T##Double#>, longitude: <#T##Double#>, mapString: <#T##String#>, mediaURL: <#T##String#>, objectId: <#T##String#>, uniqueKey: <#T##String#>, updatedAt: <#T##String#>)
-//
-//        MarkFavorite(mediaType: "movie", mediaId: movieId, favorite: favorite)
-//        taskForPOSTRequest(url: Endpoints.markFavorite.url, responseType: TMDBResponse.self, body: body) { response, error in
-//            if let response = response {
-//                completion(response.statusCode == 1 || response.statusCode == 12 || response.statusCode == 13, nil)
-//            } else {
-//                completion(false, nil)
-//            }
-//        }
-//    }
+    func replaceStudentLocation() {
+        UserAuthentication.getUserData(completion: { (success, error) in
+            UserAuthentication.putExistingStudentLocation(
+                latitude: self.mapView.centerCoordinate.latitude,
+                longitude: self.mapView.centerCoordinate.longitude,
+                completion: { (sucess, error) in
+                    self.navigationController?.popToRootViewController(animated: true)
+                    self.handleLocationSessionResponse(success: success, error: error)
+                })
+        })
+    }
 
+    func addNewStudentLocation() {
+        UserAuthentication.getUserData(completion: { (success, error) in
+            UserAuthentication.postNewStudentLocation(
+                latitude: self.mapView.centerCoordinate.latitude,
+                longitude: self.mapView.centerCoordinate.longitude,
+                completion: { (success, error) in
+                    self.navigationController?.popToRootViewController(animated: true)
+                    self.handleLocationSessionResponse(success: success, error: error)
+                })
+        })
+    }
 
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
@@ -118,12 +120,37 @@ class FindLocationViewController: UIViewController {
         }
     }
 
-    func addLocationPin() {
-        pin.title = linkTextField.text
-        pin.subtitle = "First Name Last Name"
+    func handleLocationSessionResponse(success: Bool, error: Error?) {
+        if success {
+            addLocationPin(firstName: UserAuthentication.Auth.firstName, lastName: UserAuthentication.Auth.firstName)
+            print("🟢\(UserAuthentication.Auth.firstName)")
+        } else {
+            debugPrint("🔴 ERROR IS HERE >> \(error?.localizedDescription)")
+        }
+    }
+
+    func addLocationPin(firstName: String?, lastName: String?) {
+
+        mapView.delegate = self
+
+        guard let firstName = firstName, let lastName = lastName else { return }
+
+        pin.title = "\(firstName) \(lastName)"
+        pin.subtitle = UserAuthentication.Auth.mediaURL
         pin.coordinate = CLLocationCoordinate2D(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         mapView.addAnnotation(pin)
-        mapView.delegate = self
+    }
+
+//    func addNewLocation() {
+//        UserAuthentication.postNewStudentLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude, completion: handleSessionResponse(success:error:))
+//        }
+//
+    func handleSessionPostResponse(success: Bool, error: Error?) {
+        if success {
+            print("🟢")
+        } else {
+            debugPrint("🔴 ERROR IS HERE >> \(error.debugDescription)")
+        }
     }
 
     func showAlert(title: String, message: String) {
@@ -141,7 +168,6 @@ class FindLocationViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-
 }
 
     // MARK: - UITextFieldDelegate
@@ -151,9 +177,21 @@ extension FindLocationViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
     }
 
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let mediaUrl = textField.text else { return }
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
+        guard let url = textField.text else { return }
+        if textField.text != "" {
+            mediaUrl = url
+            UserAuthentication.Auth.mediaURL = mediaUrl
+        }
     }
 }
 
@@ -166,6 +204,7 @@ extension FindLocationViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "myAnnotation") as? MKPinAnnotationView
 
         if annotationView == nil {
@@ -174,9 +213,9 @@ extension FindLocationViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         annotationView?.image = UIImage(named: "Icon-Pin")
+        annotationView?.canShowCallout = true
         return annotationView
     }
-
 }
 
 //MARK: - CLLocationManagerDelegate
@@ -185,5 +224,19 @@ extension FindLocationViewController: CLLocationManagerDelegate {
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
+    }
+}
+
+//MARK: - UIViewController
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

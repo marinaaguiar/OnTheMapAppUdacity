@@ -32,6 +32,9 @@ class AddLocationViewController: UIViewController {
         let findLocationViewController = self.storyboard?.instantiateViewController(withIdentifier: "FindLocationViewController") as! FindLocationViewController
         show(findLocationViewController, sender: self)
     }
+
+    //MARK: Methods
+
 }
 
 //MARK: - UITextFieldDelegate
@@ -47,21 +50,6 @@ extension AddLocationViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if self.view.frame.origin.y != 0 {
-//            self.view.frame.origin.y = 0
-//        }
-//    }
-
 }
 
 

@@ -10,6 +10,7 @@
 		9C3CC3B8283D0D3000E0089B /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */; };
 		9C3CC3BA283D103D00E0089B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3CC3B9283D103D00E0089B /* Alert.swift */; };
 		9C8FD464283D271F00A3520C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FD463283D271F00A3520C /* Error.swift */; };
+		9C8FD468283D371400A3520C /* PostNewStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FD467283D371400A3520C /* PostNewStudentLocationResponse.swift */; };
 		9C9FB684283536D100595307 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FB683283536D100595307 /* AddLocationViewController.swift */; };
 		9C9FB6862835395700595307 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9FB6852835395700595307 /* FindLocationViewController.swift */; };
 		9C9FB6892835810800595307 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9FB6882835810800595307 /* GameController.framework */; };
@@ -24,21 +25,24 @@
 		9CBB7446282E87930082BE18 /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7445282E87930082BE18 /* BlueButton.swift */; };
 		9CBB7448282E89600082BE18 /* LightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7447282E89600082BE18 /* LightButton.swift */; };
 		9CBB744B282E91B40082BE18 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744A282E91B40082BE18 /* Field.swift */; };
-		9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */; };
 		9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7451282E9D730082BE18 /* UserAuthentication.swift */; };
 		9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7454282EB0F80082BE18 /* LoginRequest.swift */; };
 		9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7456282EC70F0082BE18 /* LoginResponse.swift */; };
 		9CBBAA702833AB02007EB5BF /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBBAA6F2833AB02007EB5BF /* FacebookLogin */; };
 		9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA722833D601007EB5BF /* MapViewController.swift */; };
 		9CBBAA752833DFF4007EB5BF /* StudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */; };
-		9CBBAA772833F71D007EB5BF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA762833F71D007EB5BF /* ListViewController.swift */; };
+		9CBBAA772833F71D007EB5BF /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA762833F71D007EB5BF /* ListTableViewController.swift */; };
 		9CBBAA792834044A007EB5BF /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA782834044A007EB5BF /* ListTableViewCell.swift */; };
+		9CF05DF2283E5A35006F65CD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF05DF1283E5A35006F65CD /* UserData.swift */; };
+		9CF05DF4283E6A7A006F65CD /* PutStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF05DF3283E6A7A006F65CD /* PutStudentLocationResponse.swift */; };
+		9CF05DF8283FCEBB006F65CD /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF05DF7283FCEBB006F65CD /* StudentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
 		9C3CC3B9283D103D00E0089B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9C8FD463283D271F00A3520C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		9C8FD467283D371400A3520C /* PostNewStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNewStudentLocationResponse.swift; sourceTree = "<group>"; };
 		9C9FB683283536D100595307 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		9C9FB6852835395700595307 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
 		9C9FB6882835810800595307 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
@@ -55,15 +59,17 @@
 		9CBB7445282E87930082BE18 /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
 		9CBB7447282E89600082BE18 /* LightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightButton.swift; sourceTree = "<group>"; };
 		9CBB744A282E91B40082BE18 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
-		9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9CBB7451282E9D730082BE18 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		9CBB7454282EB0F80082BE18 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		9CBB7456282EC70F0082BE18 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		9CBBAA712833B010007EB5BF /* OnTheMapAppUdacity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnTheMapAppUdacity.entitlements; sourceTree = "<group>"; };
 		9CBBAA722833D601007EB5BF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResponse.swift; sourceTree = "<group>"; };
-		9CBBAA762833F71D007EB5BF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		9CBBAA762833F71D007EB5BF /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		9CBBAA782834044A007EB5BF /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		9CF05DF1283E5A35006F65CD /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		9CF05DF3283E6A7A006F65CD /* PutStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutStudentLocationResponse.swift; sourceTree = "<group>"; };
+		9CF05DF7283FCEBB006F65CD /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,15 +89,25 @@
 		9C8FD465283D27F000A3520C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9C8FD466283D34D100A3520C /* Common */,
 				9CAC28B7283D17C500DF443A /* LoginViewController.swift */,
-				9CBB744E282E95EF0082BE18 /* RegisterViewController.swift */,
 				9CBBAA722833D601007EB5BF /* MapViewController.swift */,
-				9CBBAA762833F71D007EB5BF /* ListViewController.swift */,
+				9CBBAA762833F71D007EB5BF /* ListTableViewController.swift */,
 				9CBBAA782834044A007EB5BF /* ListTableViewCell.swift */,
 				9C9FB683283536D100595307 /* AddLocationViewController.swift */,
 				9C9FB6852835395700595307 /* FindLocationViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9C8FD466283D34D100A3520C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */,
+				9C3CC3B9283D103D00E0089B /* Alert.swift */,
+				9C8FD463283D271F00A3520C /* Error.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		9C9FB6872835810800595307 /* Frameworks */ = {
@@ -155,6 +171,7 @@
 		9CBB743C282E684D0082BE18 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				9CBB7451282E9D730082BE18 /* UserAuthentication.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -200,9 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				9C8FD465283D27F000A3520C /* ViewControllers */,
-				9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */,
-				9C3CC3B9283D103D00E0089B /* Alert.swift */,
-				9C8FD463283D271F00A3520C /* Error.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -210,8 +224,8 @@
 		9CBB7450282E9C530082BE18 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9CF05DF7283FCEBB006F65CD /* StudentModel.swift */,
 				9CBB7453282EB0E50082BE18 /* APIResponse */,
-				9CBB7451282E9D730082BE18 /* UserAuthentication.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +236,9 @@
 				9CBB7454282EB0F80082BE18 /* LoginRequest.swift */,
 				9CBB7456282EC70F0082BE18 /* LoginResponse.swift */,
 				9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */,
+				9C8FD467283D371400A3520C /* PostNewStudentLocationResponse.swift */,
+				9CF05DF3283E6A7A006F65CD /* PutStudentLocationResponse.swift */,
+				9CF05DF1283E5A35006F65CD /* UserData.swift */,
 			);
 			path = APIResponse;
 			sourceTree = "<group>";
@@ -307,11 +324,13 @@
 				9CBB7448282E89600082BE18 /* LightButton.swift in Sources */,
 				9CBB7446282E87930082BE18 /* BlueButton.swift in Sources */,
 				9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */,
-				9CBB744F282E95EF0082BE18 /* RegisterViewController.swift in Sources */,
-				9CBBAA772833F71D007EB5BF /* ListViewController.swift in Sources */,
+				9CBBAA772833F71D007EB5BF /* ListTableViewController.swift in Sources */,
 				9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */,
+				9C8FD468283D371400A3520C /* PostNewStudentLocationResponse.swift in Sources */,
+				9CF05DF8283FCEBB006F65CD /* StudentModel.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
 				9C8FD464283D271F00A3520C /* Error.swift in Sources */,
+				9CF05DF2283E5A35006F65CD /* UserData.swift in Sources */,
 				9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */,
 				9CBBAA792834044A007EB5BF /* ListTableViewCell.swift in Sources */,
 				9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */,
@@ -322,6 +341,7 @@
 				9C9FB684283536D100595307 /* AddLocationViewController.swift in Sources */,
 				9C3CC3B8283D0D3000E0089B /* EmailValidation.swift in Sources */,
 				9C3CC3BA283D103D00E0089B /* Alert.swift in Sources */,
+				9CF05DF4283E6A7A006F65CD /* PutStudentLocationResponse.swift in Sources */,
 				9CBB7426282D89C90082BE18 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

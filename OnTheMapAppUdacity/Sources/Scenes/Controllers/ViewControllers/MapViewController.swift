@@ -15,9 +15,6 @@ class MapViewController: UIViewController {
     var results: [StudentLocation] = []
     var pinsArray: [MKAnnotation] = []
 
-//    var pinsArray: [CLLocationCoordinate2D] {
-//
-//    }
     // MARK: Outlets
 
     @IBOutlet weak var addLocationButton: UIBarButtonItem!
@@ -29,15 +26,26 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+
+        UserAuthentication.getStudentsLocation { results, error in
+            self.results = results
+            self.populateTheMap(results: results)
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        mapView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
+        mapView.removeAnnotations(pinsArray)
+        pinsArray.removeAll()
         UserAuthentication.getStudentsLocation { results, error in
             self.results = results
             self.populateTheMap(results: results)
-
         }
     }
 
@@ -45,8 +53,20 @@ class MapViewController: UIViewController {
 
     @IBAction func addLocationButtonPressed(_ sender: Any) {
 
-        // If the person had already added the location, SHOW the alert:
+        if UserAuthentication.Auth.latitude == 0.0 && UserAuthentication.Auth.longitude == 0.0 {
+            let addLocationViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddLocationViewController") as! AddLocationViewController
+            self.show(addLocationViewController, sender: self)
+        } else {
+            presentAlert()
+        }
+    }
 
+    @IBAction func reloadButtonPressed(_ sender: Any) {
+    }
+
+    //MARK: Methods
+
+    func presentAlert() {
         let alert = UIAlertController(title: "", message: "You have already posted a student location. Would you like to overwrite your current location?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             alert.dismiss(animated: true)
@@ -57,26 +77,18 @@ class MapViewController: UIViewController {
             self.show(addLocationViewController, sender: self)
         }))
         self.present(alert, animated: true, completion: nil)
-
-        // else
     }
-
-    @IBAction func reloadButtonPressed(_ sender: Any) {
-    }
-
-    //MARK: Methods
 
     func populateTheMap(results: [StudentLocation]) {
 
         for index in 0..<results.count {
-
             let pin = MKPointAnnotation()
-            pin.title = results[index].mediaURL
-            pin.subtitle = "\(results[index].firstName) \(results[index].lastName)"
+            pin.title = "\(results[index].firstName) \(results[index].lastName)"
+            pin.subtitle = results[index].mediaURL
             pin.coordinate = CLLocationCoordinate2D(latitude: results[index].latitude, longitude: results[index].longitude)
             pinsArray.append(pin)
         }
-        mapView.addAnnotations(pinsArray)
+            mapView.addAnnotations(pinsArray)
     }
 }
 
@@ -93,9 +105,11 @@ extension MapViewController: MKMapViewDelegate {
 
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myAnnotation")
+
         } else {
             annotationView?.annotation = annotation
         }
+        annotationView?.canShowCallout = true
         annotationView?.image = UIImage(named: "Icon-Pin")
         return annotationView
     }

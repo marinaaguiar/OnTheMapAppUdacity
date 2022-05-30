@@ -25,16 +25,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        emailTextField.delegate = self
-//        passwordTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
 
-        if let token = AccessToken.current,
-           !token.isExpired {
-            // User is logged in, do work such as go to next view controller.
-        }
-
-
-        print(UserAuthentication.Endpoints.login.url)
+        debugPrint(UserAuthentication.Endpoints.login.url)
     }
 
     //MARK: Interaction Methods
@@ -66,10 +60,10 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        let registerViewController = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
-        self.present(registerViewController, animated:true, completion:nil)
+        if let url = URL(string: "https://auth.udacity.com/sign-up") {
+            UIApplication.shared.open(url)
+        }
     }
-
 
     func handleSessionResponse(success: Bool, error: Error?) {
         if success {
@@ -105,18 +99,6 @@ class LoginViewController: UIViewController {
     }
 }
 
-//extension LoginViewController: LoginButtonDelegate {
-//
-//    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-//        //
-//    }
-//
-//    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-//        //
-//    }
-//}
-
-
 //MARK: - UITextFieldDelegate
 
 extension LoginViewController: UITextFieldDelegate {
@@ -145,6 +127,5 @@ extension LoginViewController: UITextFieldDelegate {
         }
     }
 }
-
 
 

@@ -10,7 +10,7 @@ struct LoginRequest: Codable {
     private let udacity: LoginRequest
 
     init(username: String, password: String) {
-        let request = LoginRequest(username: username, password: password )
+        let request = LoginRequest(username: username, password: password)
         self.udacity = request
     }
 }

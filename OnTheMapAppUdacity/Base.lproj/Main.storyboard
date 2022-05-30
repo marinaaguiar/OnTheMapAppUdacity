@@ -20,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Fl9-Iz-IbU">
                                 <rect key="frame" x="20" y="366" width="350" height="314"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Md-Bp-sLe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gordinho.marina@gmail.com" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Md-Bp-sLe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -29,7 +29,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-uB-Cxe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wCcsmeNnL3jvXB" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-uB-Cxe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="66" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -144,132 +144,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="83.705357142857139"/>
+            <point key="canvasLocation" x="911" y="77"/>
         </scene>
-        <!--Register View Controller-->
-        <scene sceneID="XSw-sh-DdZ">
-            <objects>
-                <viewController storyboardIdentifier="RegisterViewController" id="Hku-EV-BVL" customClass="RegisterViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MAl-uC-drL">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BIw-SZ-EVL">
-                                <rect key="frame" x="20" y="44" width="350" height="281"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="7XA-ds-KUd">
-                                        <rect key="frame" x="110" y="75.666666666666686" width="130" height="130"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="130" id="VML-Wm-Glh"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="lJC-8D-rTc"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="7XA-ds-KUd" firstAttribute="centerY" secondItem="BIw-SZ-EVL" secondAttribute="centerY" id="KOx-wD-oWH"/>
-                                    <constraint firstItem="7XA-ds-KUd" firstAttribute="centerX" secondItem="BIw-SZ-EVL" secondAttribute="centerX" id="s6t-BF-lzb"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hGW-ev-seA">
-                                <rect key="frame" x="20" y="325" width="350" height="248"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jaG-S3-kjg" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
-                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="oqt-Tq-cqg"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yRj-h8-I4R" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66" width="350" height="50"/>
-                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Uh2-Q4-cre"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fgu-DW-L47" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="132" width="350" height="50"/>
-                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="vdQ-Uz-YUH"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-Bu-A6k" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="198" width="350" height="50"/>
-                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="BUi-Ca-1hQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbX-3t-3gZ">
-                                <rect key="frame" x="20" y="573" width="350" height="237"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT5-IG-Pit" customClass="BlueButton" customModule="OnTheMapAppUdacity" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93.666666666666629" width="350" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="VpT-8N-0LR"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="register" cornerStyle="large">
-                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="registerButtonPressed:" destination="Hku-EV-BVL" eventType="touchUpInside" id="lAB-4y-5mB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="IT5-IG-Pit" firstAttribute="centerX" secondItem="WbX-3t-3gZ" secondAttribute="centerX" id="Dgf-67-UzT"/>
-                                    <constraint firstItem="IT5-IG-Pit" firstAttribute="centerY" secondItem="WbX-3t-3gZ" secondAttribute="centerY" id="MGK-bo-Hag"/>
-                                    <constraint firstItem="IT5-IG-Pit" firstAttribute="leading" secondItem="WbX-3t-3gZ" secondAttribute="leading" id="U8C-eQ-xFk"/>
-                                    <constraint firstAttribute="trailing" secondItem="IT5-IG-Pit" secondAttribute="trailing" id="cAa-cm-Deg"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Rvh-8Y-b8V"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="hGW-ev-seA" firstAttribute="leading" secondItem="Rvh-8Y-b8V" secondAttribute="leading" constant="20" id="BKq-OI-4Q8"/>
-                            <constraint firstItem="BIw-SZ-EVL" firstAttribute="top" secondItem="Rvh-8Y-b8V" secondAttribute="top" id="G3f-Fy-UK1"/>
-                            <constraint firstItem="WbX-3t-3gZ" firstAttribute="top" secondItem="hGW-ev-seA" secondAttribute="bottom" id="Mpd-zW-azQ"/>
-                            <constraint firstItem="Rvh-8Y-b8V" firstAttribute="trailing" secondItem="hGW-ev-seA" secondAttribute="trailing" constant="20" id="RYP-W4-if9"/>
-                            <constraint firstItem="BIw-SZ-EVL" firstAttribute="leading" secondItem="Rvh-8Y-b8V" secondAttribute="leading" constant="20" id="Sb3-9T-vSb"/>
-                            <constraint firstItem="WbX-3t-3gZ" firstAttribute="leading" secondItem="Rvh-8Y-b8V" secondAttribute="leading" constant="20" id="WS6-8Z-FYy"/>
-                            <constraint firstAttribute="trailing" secondItem="WbX-3t-3gZ" secondAttribute="trailing" constant="20" id="ZKa-ku-Ya1"/>
-                            <constraint firstItem="WbX-3t-3gZ" firstAttribute="top" secondItem="Rvh-8Y-b8V" secondAttribute="bottom" constant="-237" id="bV9-Xn-UnA"/>
-                            <constraint firstItem="Rvh-8Y-b8V" firstAttribute="bottom" secondItem="WbX-3t-3gZ" secondAttribute="bottom" id="fLQ-dK-ZvT"/>
-                            <constraint firstItem="hGW-ev-seA" firstAttribute="top" secondItem="BIw-SZ-EVL" secondAttribute="bottom" id="l61-pH-wm6"/>
-                            <constraint firstItem="Rvh-8Y-b8V" firstAttribute="trailing" secondItem="BIw-SZ-EVL" secondAttribute="trailing" constant="20" id="qvu-2C-Li5"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="dCX-kh-0aR"/>
-                    <connections>
-                        <outlet property="emailTextField" destination="fgu-DW-L47" id="Fb2-gQ-Q3q"/>
-                        <outlet property="firstNameTextField" destination="jaG-S3-kjg" id="IJv-Tt-PCh"/>
-                        <outlet property="lastNameTextField" destination="yRj-h8-I4R" id="9Uj-0j-Bl6"/>
-                        <outlet property="passwordTextField" destination="tdH-Bu-A6k" id="Ryi-Gx-mVe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SAK-Cd-ckS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="843" y="83"/>
-        </scene>
-        <!--List View Controller-->
+        <!--List Table View Controller-->
         <scene sceneID="cKW-Ky-KBX">
             <objects>
-                <viewController id="M3T-oA-amx" customClass="ListViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M3T-oA-amx" customClass="ListTableViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NYO-Xq-BrO">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,7 +176,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1m-m2-JTj">
-                                                            <rect key="frame" x="62" y="22" width="312" height="20.333333333333329"/>
+                                                            <rect key="frame" x="62" y="22" width="312" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -460,7 +340,7 @@
                                     <constraint firstAttribute="height" constant="50" id="MZ5-tI-FMW"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="location" imagePlacement="leading" title="find here on the map" imagePadding="16" cornerStyle="large">
+                                <buttonConfiguration key="configuration" style="filled" image="location" catalog="system" imagePlacement="leading" title="find here on the map" imagePadding="16" cornerStyle="large">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
                                 </buttonConfiguration>
@@ -515,7 +395,7 @@
                                     <constraint firstAttribute="height" constant="50" id="02H-ki-WG3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" textContentType="url"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcb-a7-cSC" customClass="LightButton" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                 <rect key="frame" x="20" y="680" width="350" height="50"/>
@@ -657,7 +537,7 @@
         <image name="fb-logo" width="28" height="28"/>
         <image name="line" width="141" height="1"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="location" width="22" height="30"/>
+        <image name="location" catalog="system" width="128" height="118"/>
         <image name="locationGray" width="22" height="29"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="udacity" width="2500" height="2500"/>
