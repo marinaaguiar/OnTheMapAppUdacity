@@ -8,6 +8,15 @@
 import Foundation
 import UIKit
 import MapKit
+import SafariServices
+
+class OTMPointAnnotation: MKPointAnnotation {
+    var identifier: String
+
+    init(identifier: String) {
+        self.identifier = identifier
+    }
+}
 
 class MapViewController: UIViewController {
 
@@ -82,7 +91,7 @@ class MapViewController: UIViewController {
     func populateTheMap(results: [StudentLocation]) {
 
         for index in 0..<results.count {
-            let pin = MKPointAnnotation()
+            let pin = OTMPointAnnotation(identifier: results[index].objectId)
             pin.title = "\(results[index].firstName) \(results[index].lastName)"
             pin.subtitle = results[index].mediaURL
             pin.coordinate = CLLocationCoordinate2D(latitude: results[index].latitude, longitude: results[index].longitude)
@@ -100,16 +109,35 @@ extension MapViewController: MKMapViewDelegate {
         //
     }
 
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard
+            let annotation = view.annotation as? OTMPointAnnotation,
+            let result = results.first(where: { $0.objectId == annotation.identifier }),
+            let url = URL(string: result.mediaURL)
+        else {
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(url) {
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
+        } else {
+            Alert.showBasics(title: "Invalid url", message: "", vc: self)
+        }
+    }
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "myAnnotation") as? MKPinAnnotationView
 
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myAnnotation")
-
         } else {
             annotationView?.annotation = annotation
         }
         annotationView?.canShowCallout = true
+
+        let detailButton = UIButton(type: .detailDisclosure)
+        annotationView?.rightCalloutAccessoryView = detailButton
         annotationView?.image = UIImage(named: "Icon-Pin")
         return annotationView
     }

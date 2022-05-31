@@ -10,6 +10,7 @@ import UIKit
 import FacebookLogin
 import FBSDKLoginKit
 import FBSDKCoreKit
+import SafariServices
 
 class LoginViewController: UIViewController {
 
@@ -60,9 +61,13 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        if let url = URL(string: "https://auth.udacity.com/sign-up") {
-            UIApplication.shared.open(url)
+
+        guard let url = URL(string: "https://auth.udacity.com/sign-up") else {
+            Alert.showBasics(title: "Error", message: "Not able to access the URL", vc: self)
+            return
         }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true, completion: nil)
     }
 
     func handleSessionResponse(success: Bool, error: Error?) {

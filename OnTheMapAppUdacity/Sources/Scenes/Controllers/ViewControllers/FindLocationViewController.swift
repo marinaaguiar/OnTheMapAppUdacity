@@ -31,7 +31,6 @@ class FindLocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
         linkTextField.delegate = self
     }
 
@@ -49,7 +48,6 @@ class FindLocationViewController: UIViewController {
         } else {
             replaceStudentLocation()
         }
-
     }
 
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -115,8 +113,14 @@ class FindLocationViewController: UIViewController {
 
     func centerViewInUserLocation() {
         if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
+
+            if UserAuthentication.Auth.latitude == 0 && UserAuthentication.Auth.longitude == 0 {
+                let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+                mapView.setRegion(region, animated: true)
+            } else {
+                let region = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: UserAuthentication.Auth.latitude, longitude: UserAuthentication.Auth.longitude), latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+                mapView.setRegion(region, animated: true)
+            }
         }
     }
 
@@ -141,10 +145,6 @@ class FindLocationViewController: UIViewController {
         mapView.addAnnotation(pin)
     }
 
-//    func addNewLocation() {
-//        UserAuthentication.postNewStudentLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude, completion: handleSessionResponse(success:error:))
-//        }
-//
     func handleSessionPostResponse(success: Bool, error: Error?) {
         if success {
             print("🟢")
@@ -187,10 +187,14 @@ extension FindLocationViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
 
-        guard let url = textField.text else { return }
-        if textField.text != "" {
-            mediaUrl = url
+        guard let urlString = textField.text else { return }
+        guard let url = URL(string: urlString) else { return }
+
+        if UIApplication.shared.canOpenURL(url) {
+            mediaUrl = urlString
             UserAuthentication.Auth.mediaURL = mediaUrl
+        } else {
+            Alert.showBasics(title: "Invalid Link", message: "Please Try to Enter a Valid Link.", vc: self)
         }
     }
 }
@@ -227,16 +231,3 @@ extension FindLocationViewController: CLLocationManagerDelegate {
     }
 }
 
-//MARK: - UIViewController
-
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
