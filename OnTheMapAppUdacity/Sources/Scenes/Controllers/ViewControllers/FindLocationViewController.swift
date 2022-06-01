@@ -112,13 +112,14 @@ class FindLocationViewController: UIViewController {
     }
 
     func centerViewInUserLocation() {
+        let userLocation = CLLocationCoordinate2D(latitude: UserAuthentication.Auth.latitude, longitude: UserAuthentication.Auth.longitude)
         if let location = locationManager.location?.coordinate {
 
             if UserAuthentication.Auth.latitude == 0 && UserAuthentication.Auth.longitude == 0 {
                 let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
                 mapView.setRegion(region, animated: true)
             } else {
-                let region = MKCoordinateRegion.init(center: CLLocationCoordinate2D(latitude: UserAuthentication.Auth.latitude, longitude: UserAuthentication.Auth.longitude), latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+                let region = MKCoordinateRegion.init(center: userLocation, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
                 mapView.setRegion(region, animated: true)
             }
         }
@@ -195,6 +196,7 @@ extension FindLocationViewController: UITextFieldDelegate {
             UserAuthentication.Auth.mediaURL = mediaUrl
         } else {
             Alert.showBasics(title: "Invalid Link", message: "Please Try to Enter a Valid Link.", vc: self)
+            textField.text = ""
         }
     }
 }

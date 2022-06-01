@@ -19,6 +19,8 @@ class UserAuthentication {
         static var longitude = 0.0
     }
 
+    static var itemsCounts = 15
+
     enum ApiError: Error {
         case unknownError
     }
@@ -26,18 +28,21 @@ class UserAuthentication {
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
 
-        case login
+        case session
         case getUsersLocation
+        case getUsersLocationList
         case getUserData
         case postNewStudentLocation
         case putExistingStudentLocation
 
         var stringValue: String {
             switch self {
-            case .login:
+            case .session:
                 return Endpoints.base + "/session"
             case .getUsersLocation:
                 return Endpoints.base + "/StudentLocation?limit=100&order=-updatedAt"
+            case .getUsersLocationList:
+                return Endpoints.base + "/StudentLocation?limit=\(itemsCounts)&order=-updatedAt"
             case .getUserData:
                 return Endpoints.base + "/users/\(Auth.sessionId)"
             case .postNewStudentLocation:
@@ -79,6 +84,48 @@ class UserAuthentication {
                 return
             }
             let decoder = JSONDecoder()
+            let parsed: Result<ResponseType, Error> = parse(data: data)
+
+            DispatchQueue.main.async {
+                switch parsed {
+                case let .success(object):
+                    completion(object, nil)
+                case let .failure(error):
+                    print("🔴 ERROR: \(error.localizedDescription)")
+                    completion(nil, error)
+                }
+            }
+        }
+
+        task.resume()
+    }
+
+    class func delete<ResponseType: Decodable>(
+        url: URL,
+        responseType: ResponseType.Type,
+        completion: @escaping (ResponseType?, Error?) -> Void) {
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+
             let parsed: Result<ResponseType, Error> = parse(data: data)
 
             DispatchQueue.main.async {
@@ -184,7 +231,7 @@ class UserAuthentication {
         completion: @escaping (Bool, Error?) -> Void) {
 
         let body = LoginRequest(username: username, password: password)
-            post(url: Endpoints.login.url, responseType: LoginResponse.self, body: body) { response, error in
+            post(url: Endpoints.session.url, responseType: LoginResponse.self, body: body) { response, error in
             if let response = response {
                 Auth.registered = response.account.registered
                 Auth.sessionId = response.account.key
@@ -192,6 +239,20 @@ class UserAuthentication {
                 completion(true, nil)
             } else {
                 debugPrint("🔴\(error?.localizedDescription)")
+                completion(false, error)
+            }
+        }
+    }
+
+    class func logout(completion: @escaping (Bool, Error?) -> Void) {
+
+        delete(url: Endpoints.session.url, responseType: LogoutResponse.self) { response, error in
+            if let response = response {
+                Auth.sessionId = response.session.id
+                print("🔵 SESSION FINISHED")
+                completion(true, nil)
+            } else {
+                debugPrint("🔴\(error.debugDescription)")
                 completion(false, error)
             }
         }
@@ -209,9 +270,9 @@ class UserAuthentication {
         }
     }
 
-    class func getStudentsLocationList(completion: @escaping ([StudentLocation], Error?) -> Void) {
+    class func getStudentsLocationList(itemsCount: Int, completion: @escaping ([StudentLocation], Error?) -> Void) {
         print(Endpoints.getUsersLocation.url)
-        get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
+        get(url: Endpoints.getUsersLocationList.url, responseType: StudentResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
             } else {

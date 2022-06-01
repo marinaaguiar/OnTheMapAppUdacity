@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct LoginResponse:Codable {
+struct LoginResponse: Codable {
     let account: Account
     let session: Session
 }
@@ -14,4 +14,8 @@ struct Account: Codable {
 struct Session: Codable {
     let id: String
     let expiration: String
+}
+
+struct LogoutResponse: Codable {
+    let session: Session
 }

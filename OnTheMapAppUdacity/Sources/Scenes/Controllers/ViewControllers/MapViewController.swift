@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import MapKit
 import SafariServices
+import FacebookLogin
+import FBSDKLoginKit
 
 class OTMPointAnnotation: MKPointAnnotation {
     var identifier: String
@@ -28,7 +30,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var addLocationButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var reloadButton: UIBarButtonItem!
+    @IBOutlet weak var logOutButton: UIBarButtonItem!
 
     //MARK: Lifecycle Methods
 
@@ -70,10 +72,25 @@ class MapViewController: UIViewController {
         }
     }
 
-    @IBAction func reloadButtonPressed(_ sender: Any) {
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+
+        if let token = AccessToken.current {
+            let loginManager = LoginManager()
+            loginManager.logOut()
+        } else {
+            UserAuthentication.logout(completion: handleSessionResponse(success:error:))
+        }
     }
 
     //MARK: Methods
+
+    func handleSessionResponse(success: Bool, error: Error?) {
+        if success {
+            dismiss(animated: true)
+        } else {
+            Alert.showBasics(title: "Logout Failed", message: "\(error?.localizedDescription)", vc: self)
+        }
+    }
 
     func presentAlert() {
         let alert = UIAlertController(title: "", message: "You have already posted a student location. Would you like to overwrite your current location?", preferredStyle: .alert)

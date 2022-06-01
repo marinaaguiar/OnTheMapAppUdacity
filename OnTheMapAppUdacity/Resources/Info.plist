@@ -7,16 +7,16 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb1350699378745317</string>
+				<string>fb378336167437692</string>
 			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>1350699378745317</string>
+	<string>378336167437692</string>
 	<key>FacebookClientToken</key>
-	<string>98d73328d1ec6c5783d57012d29a7bd5</string>
+	<string>9e68c7ebdca16e75244cf7e8163ed6a3</string>
 	<key>FacebookDisplayName</key>
-	<string>TestApp</string>
+	<string>OnTheMap</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

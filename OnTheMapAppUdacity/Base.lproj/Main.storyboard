@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +34,7 @@
                                         <rect key="frame" x="0.0" y="66" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBJ-z1-NEW" customClass="BlueButton" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="132" width="350" height="50"/>
@@ -158,38 +159,49 @@
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="lbK-NB-0mk" customClass="ListTableViewCell" customModule="OnTheMapAppUdacity" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TableViewCell" id="lbK-NB-0mk" customClass="ListTableViewCell" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lbK-NB-0mk" id="g8f-bP-mNk" customClass="ListTableViewCell" customModule="OnTheMapAppUdacity" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4X-oV-W2Y">
-                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="361.33333333333331" height="64"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationGray" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-gN-2Q8">
-                                                            <rect key="frame" x="16" y="17" width="30" height="30"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-gN-2Q8">
+                                                            <rect key="frame" x="20" y="14.666666666666664" width="35" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="Z3D-tR-9XL"/>
-                                                                <constraint firstAttribute="width" constant="30" id="v8z-N5-DGA"/>
+                                                                <constraint firstAttribute="height" constant="35" id="Z3D-tR-9XL"/>
+                                                                <constraint firstAttribute="width" constant="35" id="v8z-N5-DGA"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1m-m2-JTj">
-                                                            <rect key="frame" x="62" y="22" width="312" height="20"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="A8J-EX-gCq">
+                                                            <rect key="frame" x="71" y="10" width="278.33333333333331" height="44"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1m-m2-JTj">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="19.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.google.com.br" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmr-RD-71P">
+                                                                    <rect key="frame" x="0.0" y="24.666666666666664" width="120.33333333333333" height="19.333333333333336"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="X1m-m2-JTj" firstAttribute="leading" secondItem="uNS-gN-2Q8" secondAttribute="trailing" constant="16" id="FCX-TG-58P"/>
-                                                        <constraint firstItem="X1m-m2-JTj" firstAttribute="centerY" secondItem="c4X-oV-W2Y" secondAttribute="centerY" id="Ozo-wu-20w"/>
+                                                        <constraint firstItem="A8J-EX-gCq" firstAttribute="leading" secondItem="uNS-gN-2Q8" secondAttribute="trailing" constant="16" id="DbF-CR-VZh"/>
                                                         <constraint firstAttribute="height" constant="64" id="Ufc-iF-JDb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="X1m-m2-JTj" secondAttribute="trailing" constant="16" id="VHP-gZ-6UZ"/>
-                                                        <constraint firstItem="uNS-gN-2Q8" firstAttribute="leading" secondItem="c4X-oV-W2Y" secondAttribute="leading" constant="16" id="bNd-Za-tWf"/>
+                                                        <constraint firstItem="uNS-gN-2Q8" firstAttribute="leading" secondItem="c4X-oV-W2Y" secondAttribute="leading" constant="20" id="bNd-Za-tWf"/>
+                                                        <constraint firstItem="A8J-EX-gCq" firstAttribute="top" secondItem="c4X-oV-W2Y" secondAttribute="top" constant="10" id="jlk-vO-Mkc"/>
                                                         <constraint firstItem="uNS-gN-2Q8" firstAttribute="centerY" secondItem="c4X-oV-W2Y" secondAttribute="centerY" id="tBY-Uc-fFD"/>
+                                                        <constraint firstAttribute="bottom" secondItem="A8J-EX-gCq" secondAttribute="bottom" constant="10" id="tm0-Wf-KQw"/>
+                                                        <constraint firstAttribute="trailing" secondItem="A8J-EX-gCq" secondAttribute="trailing" constant="12" id="zR9-QB-wiX"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -203,7 +215,25 @@
                                         <directionalEdgeInsets key="directionalLayoutMargins" top="16" leading="16" bottom="16" trailing="8"/>
                                         <connections>
                                             <outlet property="iconImageView" destination="uNS-gN-2Q8" id="dp9-rk-qMO"/>
+                                            <outlet property="linkTextLabel" destination="Bmr-RD-71P" id="iAb-n2-2v1"/>
                                             <outlet property="userNameTextLabel" destination="X1m-m2-JTj" id="yLa-i3-rAf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingCell" id="TFU-8J-aHo" customClass="LoadingCell" customModule="OnTheMapAppUdacity" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="108.66666603088379" width="390" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TFU-8J-aHo" id="r9c-6V-OJJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="gZy-Qx-alp">
+                                                    <rect key="frame" x="0.0" y="9.3333339691162109" width="390" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="loadingIndicator" destination="gZy-Qx-alp" id="rka-Sg-KwM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -219,14 +249,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Np1-K6-IEJ">
-                        <barButtonItem key="leftBarButtonItem" image="add-location-1" id="Wsb-5z-ryi">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Zev-NW-gHW">
+                            <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="large"/>
                             <connections>
-                                <action selector="addLocationButtonPressed:" destination="M3T-oA-amx" id="4wB-MY-BUt"/>
+                                <action selector="logoutButtonPressed:" destination="M3T-oA-amx" id="Pdb-b6-dyz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="Zev-NW-gHW">
+                        <barButtonItem key="rightBarButtonItem" image="add-location-1" id="Wsb-5z-ryi">
                             <connections>
-                                <action selector="reloadButtonPressed:" destination="M3T-oA-amx" id="2JS-gk-3ti"/>
+                                <action selector="addLocationButtonPressed:" destination="M3T-oA-amx" id="4wB-MY-BUt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -262,21 +293,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="TPa-Ec-Mbe">
-                        <barButtonItem key="leftBarButtonItem" image="add-location-1" id="XNh-mt-Vh9">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="d5Y-zi-AQW">
+                            <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="large"/>
                             <connections>
-                                <action selector="addLocationButtonPressed:" destination="qK0-IN-qri" id="RTe-lO-uST"/>
+                                <action selector="logOutButtonPressed:" destination="qK0-IN-qri" id="73w-Dz-aif"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="arrow.clockwise" catalog="system" id="d5Y-zi-AQW">
+                        <barButtonItem key="rightBarButtonItem" image="add-location-1" id="XNh-mt-Vh9">
                             <connections>
-                                <action selector="reloadButtonPressed:" destination="qK0-IN-qri" id="9k3-Xq-aeO"/>
+                                <action selector="addLocationButtonPressed:" destination="qK0-IN-qri" id="RTe-lO-uST"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addLocationButton" destination="XNh-mt-Vh9" id="LH1-CH-oaq"/>
                         <outlet property="mapView" destination="hOV-kW-b4G" id="SK1-r7-8DC"/>
-                        <outlet property="reloadButton" destination="d5Y-zi-AQW" id="IFr-as-Mvq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ltY-0Y-oZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -533,13 +564,13 @@
     <resources>
         <image name="Icon-Pin" width="30" height="39"/>
         <image name="add-location-1" width="30" height="35"/>
-        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="fb-logo" width="28" height="28"/>
         <image name="line" width="141" height="1"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="location" width="72" height="99"/>
         <image name="location" catalog="system" width="128" height="118"/>
-        <image name="locationGray" width="22" height="29"/>
         <image name="map" catalog="system" width="128" height="110"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="udacity" width="2500" height="2500"/>
         <namedColor name="ColorPrimaryBlue">
             <color red="0.0080000003799796104" green="0.70200002193450928" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

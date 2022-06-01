@@ -29,7 +29,13 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
 
-        debugPrint(UserAuthentication.Endpoints.login.url)
+        if let token = AccessToken.current,
+            !token.isExpired {
+            presentMapViewController()
+        }
+
+
+        debugPrint(UserAuthentication.Endpoints.session.url)
     }
 
     //MARK: Interaction Methods
