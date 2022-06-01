@@ -19,6 +19,8 @@ class UserAuthentication {
         static var longitude = 0.0
     }
 
+    static var itemsCounts = 15
+
     enum ApiError: Error {
         case unknownError
     }
@@ -28,6 +30,7 @@ class UserAuthentication {
 
         case login
         case getUsersLocation
+        case getUsersLocationList
         case getUserData
         case postNewStudentLocation
         case putExistingStudentLocation
@@ -38,6 +41,8 @@ class UserAuthentication {
                 return Endpoints.base + "/session"
             case .getUsersLocation:
                 return Endpoints.base + "/StudentLocation?limit=100&order=-updatedAt"
+            case .getUsersLocationList:
+                return Endpoints.base + "/StudentLocation?limit=\(itemsCounts)&order=-updatedAt"
             case .getUserData:
                 return Endpoints.base + "/users/\(Auth.sessionId)"
             case .postNewStudentLocation:
@@ -209,9 +214,9 @@ class UserAuthentication {
         }
     }
 
-    class func getStudentsLocationList(completion: @escaping ([StudentLocation], Error?) -> Void) {
+    class func getStudentsLocationList(itemsCount: Int, completion: @escaping ([StudentLocation], Error?) -> Void) {
         print(Endpoints.getUsersLocation.url)
-        get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
+        get(url: Endpoints.getUsersLocationList.url, responseType: StudentResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
             } else {

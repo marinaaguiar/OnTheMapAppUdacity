@@ -28,7 +28,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var addLocationButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var reloadButton: UIBarButtonItem!
+    @IBOutlet weak var logOutButton: UIBarButtonItem!
 
     //MARK: Lifecycle Methods
 
@@ -70,7 +70,8 @@ class MapViewController: UIViewController {
         }
     }
 
-    @IBAction func reloadButtonPressed(_ sender: Any) {
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        
     }
 
     //MARK: Methods
