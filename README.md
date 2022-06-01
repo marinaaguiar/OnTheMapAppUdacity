@@ -11,8 +11,7 @@ This app displays a map that shows information posted by other students. The map
 - Core Location
 - MapKit 
 
-
-![OnTheMapApp](https://user-images.githubusercontent.com/74434212/171214299-749b4da0-5e86-48ba-b8a1-8aae36f174ae.png)
+![OnTheMapAppUpdated](https://user-images.githubusercontent.com/74434212/171474194-98ba869b-8a0a-488b-86a5-d2ce0933b8a8.png)
 
 
 ***
