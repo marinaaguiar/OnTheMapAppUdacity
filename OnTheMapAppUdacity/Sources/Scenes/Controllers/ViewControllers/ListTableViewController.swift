@@ -50,7 +50,9 @@ class ListTableViewController: UIViewController {
         }
 
     }
-    @IBAction func reloadButtonPressed(_ sender: Any) {
+
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        UserAuthentication.logout(completion: handleSessionResponse(success:error:))
     }
 
     //MARK: Methods
@@ -73,6 +75,14 @@ class ListTableViewController: UIViewController {
        DispatchQueue.main.async {
           self.tableView.refreshControl?.endRefreshing()
        }
+    }
+
+    func handleSessionResponse(success: Bool, error: Error?) {
+        if success {
+            dismiss(animated: true)
+        } else {
+            Alert.showBasics(title: "Logout Failed", message: "\(error?.localizedDescription)", vc: self)
+        }
     }
 
     func presentAlert() {

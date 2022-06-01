@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMapAppUdacity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Fl9-Iz-IbU">
                                 <rect key="frame" x="20" y="366" width="350" height="314"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="gordinho.marina@gmail.com" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Md-Bp-sLe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Md-Bp-sLe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -30,7 +30,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="wCcsmeNnL3jvXB" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-uB-Cxe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0l-uB-Cxe" customClass="Field" customModule="OnTheMapAppUdacity" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="66" width="350" height="50"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -252,7 +252,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="Zev-NW-gHW">
                             <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="large"/>
                             <connections>
-                                <action selector="reloadButtonPressed:" destination="M3T-oA-amx" id="2JS-gk-3ti"/>
+                                <action selector="logoutButtonPressed:" destination="M3T-oA-amx" id="Pdb-b6-dyz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="add-location-1" id="Wsb-5z-ryi">
@@ -296,7 +296,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="d5Y-zi-AQW">
                             <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="large"/>
                             <connections>
-                                <action selector="reloadButtonPressed:" destination="qK0-IN-qri" id="9k3-Xq-aeO"/>
+                                <action selector="logOutButtonPressed:" destination="qK0-IN-qri" id="73w-Dz-aif"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="add-location-1" id="XNh-mt-Vh9">
@@ -307,7 +307,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addLocationButton" destination="XNh-mt-Vh9" id="LH1-CH-oaq"/>
-                        <outlet property="logOutButton" destination="d5Y-zi-AQW" id="IFr-as-Mvq"/>
                         <outlet property="mapView" destination="hOV-kW-b4G" id="SK1-r7-8DC"/>
                     </connections>
                 </viewController>
@@ -568,8 +567,8 @@
         <image name="fb-logo" width="28" height="28"/>
         <image name="line" width="141" height="1"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="location" catalog="system" width="128" height="118"/>
         <image name="location" width="72" height="99"/>
+        <image name="location" catalog="system" width="128" height="118"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="udacity" width="2500" height="2500"/>

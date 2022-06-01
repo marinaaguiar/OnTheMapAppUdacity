@@ -27,7 +27,7 @@
 		9CBB744B282E91B40082BE18 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB744A282E91B40082BE18 /* Field.swift */; };
 		9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7451282E9D730082BE18 /* UserAuthentication.swift */; };
 		9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7454282EB0F80082BE18 /* LoginRequest.swift */; };
-		9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7456282EC70F0082BE18 /* LoginResponse.swift */; };
+		9CBB7457282EC70F0082BE18 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7456282EC70F0082BE18 /* SessionResponse.swift */; };
 		9CBBAA702833AB02007EB5BF /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9CBBAA6F2833AB02007EB5BF /* FacebookLogin */; };
 		9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA722833D601007EB5BF /* MapViewController.swift */; };
 		9CBBAA752833DFF4007EB5BF /* StudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */; };
@@ -61,7 +61,7 @@
 		9CBB744A282E91B40082BE18 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		9CBB7451282E9D730082BE18 /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		9CBB7454282EB0F80082BE18 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		9CBB7456282EC70F0082BE18 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		9CBB7456282EC70F0082BE18 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		9CBBAA712833B010007EB5BF /* OnTheMapAppUdacity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnTheMapAppUdacity.entitlements; sourceTree = "<group>"; };
 		9CBBAA722833D601007EB5BF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationResponse.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				9CBB7454282EB0F80082BE18 /* LoginRequest.swift */,
-				9CBB7456282EC70F0082BE18 /* LoginResponse.swift */,
+				9CBB7456282EC70F0082BE18 /* SessionResponse.swift */,
 				9CBBAA742833DFF4007EB5BF /* StudentLocationResponse.swift */,
 				9C8FD467283D371400A3520C /* PostNewStudentLocationResponse.swift */,
 				9CF05DF3283E6A7A006F65CD /* PutStudentLocationResponse.swift */,
@@ -325,7 +325,7 @@
 				9CBB7446282E87930082BE18 /* BlueButton.swift in Sources */,
 				9CBB7455282EB0F80082BE18 /* LoginRequest.swift in Sources */,
 				9CBBAA772833F71D007EB5BF /* ListTableViewController.swift in Sources */,
-				9CBB7457282EC70F0082BE18 /* LoginResponse.swift in Sources */,
+				9CBB7457282EC70F0082BE18 /* SessionResponse.swift in Sources */,
 				9C8FD468283D371400A3520C /* PostNewStudentLocationResponse.swift in Sources */,
 				9CF05DF8283FCEBB006F65CD /* StudentModel.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
