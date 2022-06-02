@@ -46,7 +46,7 @@ class AddLocationViewController: UIViewController {
 
         if let error = error {
             Alert.showBasics(title: "Invalid location", message: "Try enter a valid location", vc: self)
-            print("Unable to Forward Geocode Address (\(error))")
+            debugPrint("Unable to Forward Geocode Address (\(error))")
             locationTextField.text = ""
             isValidLocation = false
 
@@ -61,11 +61,11 @@ class AddLocationViewController: UIViewController {
                 let coordinate = location.coordinate
                 UserAuthentication.Auth.longitude = coordinate.longitude
                 UserAuthentication.Auth.latitude = coordinate.latitude
-                print("\(coordinate.latitude), \(coordinate.longitude)")
+                debugPrint("\(coordinate.latitude), \(coordinate.longitude)")
                 UserAuthentication.Auth.mapString = locationString
                 isValidLocation = true
             } else {
-                print("No Matching Location Found")
+                debugPrint("No Matching Location Found")
             }
         }
     }

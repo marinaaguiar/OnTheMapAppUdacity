@@ -91,7 +91,7 @@ class UserAuthentication {
                 case let .success(object):
                     completion(object, nil)
                 case let .failure(error):
-                    print("🔴 ERROR: \(error.localizedDescription)")
+                    debugPrint("🔴 ERROR: \(error.localizedDescription)")
                     completion(nil, error)
                 }
             }
@@ -133,7 +133,7 @@ class UserAuthentication {
                 case let .success(object):
                     completion(object, nil)
                 case let .failure(error):
-                    print("🔴 ERROR: \(error.localizedDescription)")
+                    debugPrint("🔴 ERROR: \(error.localizedDescription)")
                     completion(nil, error)
                 }
             }
@@ -162,7 +162,7 @@ class UserAuthentication {
                     case let .success(object):
                         completion(object, nil)
                     case let .failure(error):
-                        print("🔴 ERROR: \(error.localizedDescription)")
+                        debugPrint("🔴 ERROR: \(error.localizedDescription)")
                         completion(nil, error)
                     }
                 }
@@ -196,7 +196,7 @@ class UserAuthentication {
                 case let .success(object):
                     completion(object, nil)
                 case let .failure(error):
-                    print("🔴 ERROR: \(error)")
+                    debugPrint("🔴 ERROR: \(error)")
                     completion(nil, error)
                 }
             }
@@ -235,7 +235,7 @@ class UserAuthentication {
             if let response = response {
                 Auth.registered = response.account.registered
                 Auth.sessionId = response.account.key
-                print("🔵THIS IS THE SESSION ID >> \(Auth.sessionId)")
+                debugPrint("🔵THIS IS THE SESSION ID >> \(Auth.sessionId)")
                 completion(true, nil)
             } else {
                 debugPrint("🔴\(error?.localizedDescription)")
@@ -249,7 +249,7 @@ class UserAuthentication {
         delete(url: Endpoints.session.url, responseType: LogoutResponse.self) { response, error in
             if let response = response {
                 Auth.sessionId = response.session.id
-                print("🔵 SESSION FINISHED")
+                debugPrint("🔵 SESSION FINISHED")
                 completion(true, nil)
             } else {
                 debugPrint("🔴\(error.debugDescription)")
@@ -259,7 +259,7 @@ class UserAuthentication {
     }
 
     class func getStudentsLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
-        print(Endpoints.getUsersLocation.url)
+        debugPrint(Endpoints.getUsersLocation.url)
         get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
@@ -271,19 +271,19 @@ class UserAuthentication {
     }
 
     class func getStudentsLocationList(itemsCount: Int, completion: @escaping ([StudentLocation], Error?) -> Void) {
-        print(Endpoints.getUsersLocation.url)
+        debugPrint(Endpoints.getUsersLocation.url)
         get(url: Endpoints.getUsersLocationList.url, responseType: StudentResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
             } else {
-                print("🔴 ERROR: \(error?.localizedDescription)")
+                debugPrint("🔴 ERROR: \(error?.localizedDescription)")
                 completion([], error)
             }
         }
     }
 
     class func getUserData(completion: @escaping (Bool, Error?) -> Void) {
-        print("URL >>> \(Endpoints.getUserData.url)")
+        debugPrint("URL >>> \(Endpoints.getUserData.url)")
         get(url: Endpoints.getUserData.url, responseType: User.self) { response, error in
             if let response = response {
                 Auth.firstName = response.firstName
@@ -297,7 +297,7 @@ class UserAuthentication {
     }
 
     class func postNewStudentLocation(latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
-        print("URL >>> \(Endpoints.postNewStudentLocation.url)")
+        debugPrint("URL >>> \(Endpoints.postNewStudentLocation.url)")
 
         let body = StudentModel(uniqueKey: Auth.uniqueKey, firstName: Auth.firstName, lastName: Auth.lastName, mapString: Auth.mapString, mediaURL: Auth.mediaURL, latitude: latitude, longitude: longitude)
 
@@ -307,7 +307,7 @@ class UserAuthentication {
                 Auth.objectId = response.objectId
                 Auth.latitude = latitude
                 Auth.longitude = longitude
-                print("🔵THIS IS THE SESSION ID >> \(Auth.sessionId)")
+                debugPrint("🔵THIS IS THE SESSION ID >> \(Auth.sessionId)")
                 completion(true, nil)
             } else {
 //                debugPrint("🔴\(error.debugDescription)")
@@ -317,7 +317,7 @@ class UserAuthentication {
     }
 
     class func putExistingStudentLocation(latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
-        print("URL PUT>>> \(Endpoints.putExistingStudentLocation.url)")
+        debugPrint("URL PUT>>> \(Endpoints.putExistingStudentLocation.url)")
 
         let body = StudentModel(uniqueKey: Auth.uniqueKey, firstName: Auth.firstName, lastName: Auth.lastName, mapString: Auth.mapString, mediaURL: Auth.mediaURL, latitude: latitude, longitude: longitude)
         put(url: Endpoints.putExistingStudentLocation.url, responseType: PutStudentLocationResponse.self, body: body, completion: { response, error in
@@ -326,7 +326,7 @@ class UserAuthentication {
                 Auth.latitude = latitude
                 Auth.longitude = longitude
                 completion(true, nil)
-                print("🟢 PUT RESPONSE \(response)")
+                debugPrint("🟢 PUT RESPONSE \(response)")
             } else {
                 completion(false, error)
                 debugPrint("🔴 ERROR PUT IS HERE >> \(error.debugDescription)")

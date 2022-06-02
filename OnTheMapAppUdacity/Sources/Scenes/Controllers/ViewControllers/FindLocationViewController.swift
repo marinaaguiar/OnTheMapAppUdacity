@@ -105,9 +105,9 @@ class FindLocationViewController: UIViewController {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .authorizedAlways:
-            print("authorizedAlways")
+            debugPrint("authorizedAlways")
         @unknown default:
-            print("unkown")
+            debugPrint("unkown")
         }
     }
 
@@ -128,7 +128,7 @@ class FindLocationViewController: UIViewController {
     func handleLocationSessionResponse(success: Bool, error: Error?) {
         if success {
             addLocationPin(firstName: UserAuthentication.Auth.firstName, lastName: UserAuthentication.Auth.firstName)
-            print("🟢\(UserAuthentication.Auth.firstName)")
+            debugPrint("🟢\(UserAuthentication.Auth.firstName)")
         } else {
             debugPrint("🔴 ERROR IS HERE >> \(error?.localizedDescription)")
         }
@@ -148,7 +148,7 @@ class FindLocationViewController: UIViewController {
 
     func handleSessionPostResponse(success: Bool, error: Error?) {
         if success {
-            print("🟢")
+            debugPrint("🟢")
         } else {
             debugPrint("🔴 ERROR IS HERE >> \(error.debugDescription)")
         }
@@ -163,7 +163,7 @@ class FindLocationViewController: UIViewController {
 
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
+                    debugPrint("Settings opened: \(success)") // Prints true
                 })
             }
         }))

@@ -340,20 +340,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ytb-Rv-PDQ">
-                                <rect key="frame" x="20" y="342" width="350" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ytb-Rv-PDQ">
+                                <rect key="frame" x="20" y="337" width="350" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="where are you studying today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LI-gG-uea">
-                                        <rect key="frame" x="59.000000000000014" y="0.0" width="232.33333333333337" height="50"/>
+                                        <rect key="frame" x="59.000000000000014" y="0.0" width="232.33333333333337" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your location here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-ed-6K4">
-                                        <rect key="frame" x="0.0" y="50" width="350" height="50"/>
+                                        <rect key="frame" x="0.0" y="65" width="350" height="45"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="e4h-AA-26w"/>
+                                            <constraint firstAttribute="height" constant="45" id="e4h-AA-26w"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -362,7 +362,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PS2-ed-6K4" secondAttribute="trailing" id="3K4-iT-zEX"/>
                                     <constraint firstItem="PS2-ed-6K4" firstAttribute="leading" secondItem="Ytb-Rv-PDQ" secondAttribute="leading" id="cLX-KD-MeC"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="wIl-jb-Dme"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="110" id="ehl-M1-DXK"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZt-JF-KQQ" customClass="BlueButton" customModule="OnTheMapAppUdacity" customModuleProvider="target">
@@ -383,13 +383,11 @@
                         <viewLayoutGuide key="safeArea" id="Oik-fR-tpa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Oik-fR-tpa" firstAttribute="bottom" secondItem="cZt-JF-KQQ" secondAttribute="bottom" constant="80" id="3Cg-yx-TDa"/>
                             <constraint firstItem="Oik-fR-tpa" firstAttribute="trailing" secondItem="cZt-JF-KQQ" secondAttribute="trailing" constant="20" id="5AI-5k-1eO"/>
                             <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="leading" secondItem="Oik-fR-tpa" secondAttribute="leading" constant="20" id="7sg-2Z-ZIp"/>
                             <constraint firstItem="Oik-fR-tpa" firstAttribute="trailing" secondItem="Ytb-Rv-PDQ" secondAttribute="trailing" constant="20" id="7uJ-XM-VLl"/>
-                            <constraint firstItem="cZt-JF-KQQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ytb-Rv-PDQ" secondAttribute="bottom" constant="238" id="Ctf-nJ-YSO"/>
-                            <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="top" secondItem="Oik-fR-tpa" secondAttribute="top" constant="254" id="FMs-EN-kbh"/>
                             <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="centerY" secondItem="07z-PX-6Rz" secondAttribute="centerY" constant="-30" id="O5j-uB-RkG"/>
+                            <constraint firstItem="Oik-fR-tpa" firstAttribute="bottom" secondItem="cZt-JF-KQQ" secondAttribute="bottom" constant="80" id="jfW-Yx-vIs"/>
                             <constraint firstItem="cZt-JF-KQQ" firstAttribute="leading" secondItem="Oik-fR-tpa" secondAttribute="leading" constant="20" id="vBj-2R-GaR"/>
                         </constraints>
                     </view>
