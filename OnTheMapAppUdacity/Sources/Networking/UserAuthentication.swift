@@ -20,6 +20,7 @@ class UserAuthentication {
     }
 
     static var itemsCounts = 15
+    static var networkService = NetworkService()
 
     enum ApiError: Error {
         case unknownError
@@ -56,189 +57,20 @@ class UserAuthentication {
         }
     }
 
-    static var session: URLSession {
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.httpAdditionalHeaders = [
-            "User-Agent": "dev.alecrim.test/1.0"
-        ]
-
-        return URLSession(configuration: sessionConfig)
-    }
-
-    class func post<RequestType: Encodable, ResponseType: Decodable>(
-        url: URL,
-        responseType: ResponseType.Type,
-        body: RequestType,
-        completion: @escaping (ResponseType?, Error?) -> Void) {
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = try! JSONEncoder().encode(body)
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(nil, error)
-                }
-                return
-            }
-            let decoder = JSONDecoder()
-            let parsed: Result<ResponseType, Error> = parse(data: data)
-
-            DispatchQueue.main.async {
-                switch parsed {
-                case let .success(object):
-                    completion(object, nil)
-                case let .failure(error):
-                    debugPrint("🔴 ERROR: \(error.localizedDescription)")
-                    completion(nil, error)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    class func delete<ResponseType: Decodable>(
-        url: URL,
-        responseType: ResponseType.Type,
-        completion: @escaping (ResponseType?, Error?) -> Void) {
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-
-        var xsrfCookie: HTTPCookie? = nil
-        let sharedCookieStorage = HTTPCookieStorage.shared
-        for cookie in sharedCookieStorage.cookies! {
-            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
-        }
-        if let xsrfCookie = xsrfCookie {
-            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
-        }
-
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(nil, error)
-                }
-                return
-            }
-            let decoder = JSONDecoder()
-
-            let parsed: Result<ResponseType, Error> = parse(data: data)
-
-            DispatchQueue.main.async {
-                switch parsed {
-                case let .success(object):
-                    completion(object, nil)
-                case let .failure(error):
-                    debugPrint("🔴 ERROR: \(error.localizedDescription)")
-                    completion(nil, error)
-                }
-            }
-        }
-
-        task.resume()
-    }
-
-    class func get<ResponseType: Decodable>(
-        url: URL,
-        responseType: ResponseType.Type,
-        completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
-
-            let task = session.dataTask(with: url) { data, response, error in
-                guard let data = data else {
-                    DispatchQueue.main.async {
-                        completion(nil, error)
-                    }
-                    return
-                }
-
-                let parsed: Result<ResponseType, Error> = parse(data: data)
-
-                DispatchQueue.main.async {
-                    switch parsed {
-                    case let .success(object):
-                        completion(object, nil)
-                    case let .failure(error):
-                        debugPrint("🔴 ERROR: \(error.localizedDescription)")
-                        completion(nil, error)
-                    }
-                }
-            }
-            task.resume()
-
-            return task
-        }
-
-    class func put<RequestType: Encodable, ResponseType: Decodable>(
-        url: URL,
-        responseType: ResponseType.Type,
-        body: RequestType,
-        completion: @escaping (ResponseType?, Error?) -> Void) {
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        request.httpBody = try! JSONEncoder().encode(body)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(nil, error)
-                }
-                return
-            }
-            let parsed: Result<ResponseType, Error> = parse(data: data)
-
-            DispatchQueue.main.async {
-                switch parsed {
-                case let .success(object):
-                    completion(object, nil)
-                case let .failure(error):
-                    debugPrint("🔴 ERROR: \(error)")
-                    completion(nil, error)
-                }
-            }
-        }
-        task.resume()
-    }
-
-    private class func parse<C: Decodable>(data: Data) -> Result<C, Error> {
-        let decoder = JSONDecoder()
-
-        do {
-            // First, try to decode the object as a standard JSON object.
-            let standardDecoded = try decoder.decode(C.self, from: data)
-            return .success(standardDecoded)
-        } catch {
-            do {
-                // If it fails, try to fix the result.
-                let range = 5..<data.count
-                let fixupData = data.subdata(in: range)
-                let fixupDecoded = try decoder.decode(C.self, from: fixupData)
-                return .success(fixupDecoded)
-            } catch {
-                // If the fixup fails, return the error.
-                return .failure(error)
-            }
-        }
-    }
-
     class func login(
         username: String,
         password: String,
         completion: @escaping (Bool, Error?) -> Void) {
 
         let body = LoginRequest(username: username, password: password)
-            post(url: Endpoints.session.url, responseType: LoginResponse.self, body: body) { response, error in
+            networkService.post(url: Endpoints.session.url, responseType: LoginResponse.self, body: body) { response, error in
             if let response = response {
                 Auth.registered = response.account.registered
                 Auth.sessionId = response.account.key
-                debugPrint("🔵THIS IS THE SESSION ID >> \(Auth.sessionId)")
+                debugPrint("🔵 This is session ID: \(Auth.sessionId)")
                 completion(true, nil)
             } else {
-                debugPrint("🔴\(error?.localizedDescription)")
+                debugPrint("🔴 Error Login: \(error?.localizedDescription)")
                 completion(false, error)
             }
         }
@@ -246,13 +78,13 @@ class UserAuthentication {
 
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
 
-        delete(url: Endpoints.session.url, responseType: LogoutResponse.self) { response, error in
+        networkService.delete(url: Endpoints.session.url, responseType: LogoutResponse.self) { response, error in
             if let response = response {
                 Auth.sessionId = response.session.id
-                debugPrint("🔵 SESSION FINISHED")
+                debugPrint("🔵 Session finished")
                 completion(true, nil)
             } else {
-                debugPrint("🔴\(error.debugDescription)")
+                debugPrint("🔴 Error Logout: \(error.debugDescription)")
                 completion(false, error)
             }
         }
@@ -260,11 +92,11 @@ class UserAuthentication {
 
     class func getStudentsLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
         debugPrint(Endpoints.getUsersLocation.url)
-        get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
+        networkService.get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
             } else {
-                debugPrint("🔴\(error.debugDescription)")
+                debugPrint("🔴 Error GetStudentsLocation:\(error.debugDescription)")
                 completion([], error)
             }
         }
@@ -272,11 +104,11 @@ class UserAuthentication {
 
     class func getStudentsLocationList(itemsCount: Int, completion: @escaping ([StudentLocation], Error?) -> Void) {
         debugPrint(Endpoints.getUsersLocation.url)
-        get(url: Endpoints.getUsersLocationList.url, responseType: StudentResults.self) { response, error in
+        networkService.get(url: Endpoints.getUsersLocationList.url, responseType: StudentResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
             } else {
-                debugPrint("🔴 ERROR: \(error?.localizedDescription)")
+                debugPrint("🔴 Error GetStudentsLocationList: \(error?.localizedDescription)")
                 completion([], error)
             }
         }
@@ -284,52 +116,52 @@ class UserAuthentication {
 
     class func getUserData(completion: @escaping (Bool, Error?) -> Void) {
         debugPrint("URL >>> \(Endpoints.getUserData.url)")
-        get(url: Endpoints.getUserData.url, responseType: User.self) { response, error in
+        networkService.get(url: Endpoints.getUserData.url, responseType: User.self) { response, error in
             if let response = response {
                 Auth.firstName = response.firstName
                 Auth.lastName = response.lastName
                 completion(true, nil)
             } else {
-                debugPrint("🔴 ERROR IS HERE >> \(error.debugDescription)")
+                debugPrint("🔴 Error GetUserData: \(error.debugDescription)")
                 completion(false, error)
             }
         }
     }
 
     class func postNewStudentLocation(latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
-        debugPrint("URL >>> \(Endpoints.postNewStudentLocation.url)")
+        debugPrint("Url Post: \(Endpoints.postNewStudentLocation.url)")
 
         let body = StudentModel(uniqueKey: Auth.uniqueKey, firstName: Auth.firstName, lastName: Auth.lastName, mapString: Auth.mapString, mediaURL: Auth.mediaURL, latitude: latitude, longitude: longitude)
 
-        post(url: Endpoints.postNewStudentLocation.url, responseType: PostNewStudentLocationResponse.self, body: body, completion: { response, error in
+        networkService.post(url: Endpoints.postNewStudentLocation.url, responseType: PostNewStudentLocationResponse.self, body: body, completion: { response, error in
             if let response = response {
                 Auth.createdAt = response.createdAt
                 Auth.objectId = response.objectId
                 Auth.latitude = latitude
                 Auth.longitude = longitude
-                debugPrint("🔵THIS IS THE SESSION ID >> \(Auth.sessionId)")
+                debugPrint("🔵 This is session ID: \(Auth.sessionId)")
                 completion(true, nil)
             } else {
-//                debugPrint("🔴\(error.debugDescription)")
+                debugPrint("🔴 Error PostNewStudentLocation: \(error.debugDescription)")
                 completion(false, error)
             }
         })
     }
 
     class func putExistingStudentLocation(latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
-        debugPrint("URL PUT>>> \(Endpoints.putExistingStudentLocation.url)")
+        debugPrint("Url Put: \(Endpoints.putExistingStudentLocation.url)")
 
         let body = StudentModel(uniqueKey: Auth.uniqueKey, firstName: Auth.firstName, lastName: Auth.lastName, mapString: Auth.mapString, mediaURL: Auth.mediaURL, latitude: latitude, longitude: longitude)
-        put(url: Endpoints.putExistingStudentLocation.url, responseType: PutStudentLocationResponse.self, body: body, completion: { response, error in
+        networkService.put(url: Endpoints.putExistingStudentLocation.url, responseType: PutStudentLocationResponse.self, body: body, completion: { response, error in
             if let response = response {
                 Auth.updatedAt = response.updateAt
                 Auth.latitude = latitude
                 Auth.longitude = longitude
                 completion(true, nil)
-                debugPrint("🟢 PUT RESPONSE \(response)")
+                debugPrint("🟢 Put Response: \(response)")
             } else {
                 completion(false, error)
-                debugPrint("🔴 ERROR PUT IS HERE >> \(error.debugDescription)")
+                debugPrint("🔴 Error Put: >> \(error.debugDescription)")
             }
         })
     }
