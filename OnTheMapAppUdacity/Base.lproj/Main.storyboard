@@ -102,21 +102,32 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxl-OZ-c4R">
                                 <rect key="frame" x="20" y="680" width="350" height="130"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-Yt-k1s">
-                                        <rect key="frame" x="48.666666666666686" y="48.333333333333371" width="253" height="33.333333333333343"/>
-                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Don't have an account? Sign up">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="signUpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zZG-Kd-56m"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="7rr-JF-j0M">
+                                        <rect key="frame" x="54.666666666666686" y="48.333333333333371" width="241" height="33.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghc-vi-3iH">
+                                                <rect key="frame" x="0.0" y="6.9999999999999982" width="170.33333333333334" height="19.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-Yt-k1s">
+                                                <rect key="frame" x="162.33333333333331" y="0.0" width="78.666666666666686" height="33.333333333333336"/>
+                                                <color key="tintColor" name="AccentColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Sign up">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="signUpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zZG-Kd-56m"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="nLQ-Yt-k1s" firstAttribute="centerY" secondItem="yxl-OZ-c4R" secondAttribute="centerY" id="TPr-ub-tO1"/>
-                                    <constraint firstItem="nLQ-Yt-k1s" firstAttribute="centerX" secondItem="yxl-OZ-c4R" secondAttribute="centerX" id="zMo-fA-ONU"/>
+                                    <constraint firstItem="7rr-JF-j0M" firstAttribute="centerY" secondItem="yxl-OZ-c4R" secondAttribute="centerY" id="5Ti-S1-Kc1"/>
+                                    <constraint firstItem="7rr-JF-j0M" firstAttribute="centerX" secondItem="yxl-OZ-c4R" secondAttribute="centerX" id="d86-HV-f0T"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -282,6 +293,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hOV-kW-b4G">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-5b-lWS">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
+                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Cdv-QF-nWp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -289,7 +304,9 @@
                             <constraint firstItem="hOV-kW-b4G" firstAttribute="trailing" secondItem="Cdv-QF-nWp" secondAttribute="trailing" id="KUJ-rQ-hR7"/>
                             <constraint firstItem="hOV-kW-b4G" firstAttribute="leading" secondItem="Cdv-QF-nWp" secondAttribute="leading" id="RKM-dl-2BN"/>
                             <constraint firstItem="hOV-kW-b4G" firstAttribute="top" secondItem="Cdv-QF-nWp" secondAttribute="top" id="SDO-lc-YXW"/>
+                            <constraint firstItem="68Y-5b-lWS" firstAttribute="centerX" secondItem="CSI-dr-wlO" secondAttribute="centerX" id="aRN-Ta-VLc"/>
                             <constraint firstItem="hOV-kW-b4G" firstAttribute="bottom" secondItem="Cdv-QF-nWp" secondAttribute="bottom" id="bIz-s3-kqf"/>
+                            <constraint firstItem="68Y-5b-lWS" firstAttribute="centerY" secondItem="CSI-dr-wlO" secondAttribute="centerY" id="txg-vI-sur"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="TPa-Ec-Mbe">
@@ -306,7 +323,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="68Y-5b-lWS" id="c6e-1g-a9M"/>
                         <outlet property="addLocationButton" destination="XNh-mt-Vh9" id="LH1-CH-oaq"/>
+                        <outlet property="logOutButton" destination="d5Y-zi-AQW" id="Oga-2l-Rgq"/>
                         <outlet property="mapView" destination="hOV-kW-b4G" id="SK1-r7-8DC"/>
                     </connections>
                 </viewController>
@@ -340,20 +359,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ytb-Rv-PDQ">
-                                <rect key="frame" x="20" y="342" width="350" height="100"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ytb-Rv-PDQ">
+                                <rect key="frame" x="20" y="337" width="350" height="110"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="where are you studying today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LI-gG-uea">
-                                        <rect key="frame" x="59.000000000000014" y="0.0" width="232.33333333333337" height="50"/>
+                                        <rect key="frame" x="59.000000000000014" y="0.0" width="232.33333333333337" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your location here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-ed-6K4">
-                                        <rect key="frame" x="0.0" y="50" width="350" height="50"/>
+                                        <rect key="frame" x="0.0" y="65" width="350" height="45"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="e4h-AA-26w"/>
+                                            <constraint firstAttribute="height" constant="45" id="e4h-AA-26w"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -362,7 +381,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="PS2-ed-6K4" secondAttribute="trailing" id="3K4-iT-zEX"/>
                                     <constraint firstItem="PS2-ed-6K4" firstAttribute="leading" secondItem="Ytb-Rv-PDQ" secondAttribute="leading" id="cLX-KD-MeC"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="wIl-jb-Dme"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="110" id="ehl-M1-DXK"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZt-JF-KQQ" customClass="BlueButton" customModule="OnTheMapAppUdacity" customModuleProvider="target">
@@ -379,17 +398,20 @@
                                     <action selector="findOnTheMapButton:" destination="BU5-hg-e6R" eventType="touchUpInside" id="ZFI-l2-S2H"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="n0e-qb-HDt">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oik-fR-tpa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Oik-fR-tpa" firstAttribute="bottom" secondItem="cZt-JF-KQQ" secondAttribute="bottom" constant="80" id="3Cg-yx-TDa"/>
+                            <constraint firstItem="n0e-qb-HDt" firstAttribute="centerY" secondItem="07z-PX-6Rz" secondAttribute="centerY" id="2gh-pX-Z1a"/>
                             <constraint firstItem="Oik-fR-tpa" firstAttribute="trailing" secondItem="cZt-JF-KQQ" secondAttribute="trailing" constant="20" id="5AI-5k-1eO"/>
                             <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="leading" secondItem="Oik-fR-tpa" secondAttribute="leading" constant="20" id="7sg-2Z-ZIp"/>
                             <constraint firstItem="Oik-fR-tpa" firstAttribute="trailing" secondItem="Ytb-Rv-PDQ" secondAttribute="trailing" constant="20" id="7uJ-XM-VLl"/>
-                            <constraint firstItem="cZt-JF-KQQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ytb-Rv-PDQ" secondAttribute="bottom" constant="238" id="Ctf-nJ-YSO"/>
-                            <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="top" secondItem="Oik-fR-tpa" secondAttribute="top" constant="254" id="FMs-EN-kbh"/>
                             <constraint firstItem="Ytb-Rv-PDQ" firstAttribute="centerY" secondItem="07z-PX-6Rz" secondAttribute="centerY" constant="-30" id="O5j-uB-RkG"/>
+                            <constraint firstItem="n0e-qb-HDt" firstAttribute="centerX" secondItem="07z-PX-6Rz" secondAttribute="centerX" id="bsL-qt-Mvf"/>
+                            <constraint firstItem="Oik-fR-tpa" firstAttribute="bottom" secondItem="cZt-JF-KQQ" secondAttribute="bottom" constant="80" id="jfW-Yx-vIs"/>
                             <constraint firstItem="cZt-JF-KQQ" firstAttribute="leading" secondItem="Oik-fR-tpa" secondAttribute="leading" constant="20" id="vBj-2R-GaR"/>
                         </constraints>
                     </view>
@@ -401,6 +423,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="n0e-qb-HDt" id="xQv-Gj-agh"/>
                         <outlet property="locationTextField" destination="PS2-ed-6K4" id="RrT-8h-RAh"/>
                     </connections>
                 </viewController>
@@ -443,7 +466,7 @@
                                     <action selector="submitButtonPressed:" destination="erD-BR-s6D" eventType="touchUpInside" id="1XG-nn-CwY"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-Pin" translatesAutoresizingMaskIntoConstraints="NO" id="stp-mC-gxm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="stp-mC-gxm">
                                 <rect key="frame" x="180" y="457" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Xvp-Cw-2rj"/>
@@ -562,7 +585,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-Pin" width="30" height="39"/>
         <image name="add-location-1" width="30" height="35"/>
         <image name="fb-logo" width="28" height="28"/>
         <image name="line" width="141" height="1"/>
@@ -572,6 +594,9 @@
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="udacity" width="2500" height="2500"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ColorPrimaryBlue">
             <color red="0.0080000003799796104" green="0.70200002193450928" blue="0.89399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

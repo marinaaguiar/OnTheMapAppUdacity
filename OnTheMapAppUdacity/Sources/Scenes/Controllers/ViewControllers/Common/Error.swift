@@ -10,7 +10,4 @@ import Foundation
 enum LoginErrors: Error {
     case incompleteForm
     case invalidEmail
-    case weakPassword
-    case emailAlreadyInUse
 }
-

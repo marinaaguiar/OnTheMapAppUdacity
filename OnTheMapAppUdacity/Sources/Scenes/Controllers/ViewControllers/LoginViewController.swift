@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         } catch LoginErrors.invalidEmail {
             Alert.showBasics(title: "Invalid Email Format", message: "Please make sure you format your email correctly", vc: self)
         } catch {
-            Alert.showBasics(title: "Invalid Credentials", message: "The user name or password are incorrect", vc: self)
+            // do nothing
         }
     }
 
@@ -56,12 +56,12 @@ class LoginViewController: UIViewController {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
             if let error = error {
-                print("Encountered Erorr: \(error)")
+                debugPrint("Encountered Erorr: \(error)")
             } else if let result = result, result.isCancelled {
-                print("Cancelled")
+                debugPrint("Cancelled")
             } else {
                 self.presentMapViewController()
-                print("Logged In")
+                debugPrint("Logged In")
             }
         }
     }
@@ -77,12 +77,14 @@ class LoginViewController: UIViewController {
     }
 
     func handleSessionResponse(success: Bool, error: Error?) {
+
         if success {
             presentMapViewController()
-            print("success")
-
+            debugPrint("success")
+        } else if let urlError = error as? URLError, urlError.code == URLError.notConnectedToInternet {
+            Alert.showBasics(title: "Network Error", message: "The Internet connection is offline, please try again later.", vc: self)
         } else {
-            Alert.showBasics(title: "Login Failed", message: "\(error?.localizedDescription)", vc: self)
+            Alert.showBasics(title: "Invalid Credentials", message: "The credentials were incorrect, please check your email or/and your password.", vc: self)
         }
     }
 
@@ -99,11 +101,7 @@ class LoginViewController: UIViewController {
             }
             if !email.isValidEmail {
                 throw LoginErrors.invalidEmail
-            }
-            if password.count < 8 {
-                throw LoginErrors.weakPassword
-            }
-            else {
+            } else {
                 UserAuthentication.login(username: email, password: password, completion: handleSessionResponse(success:error:))
             }
         }

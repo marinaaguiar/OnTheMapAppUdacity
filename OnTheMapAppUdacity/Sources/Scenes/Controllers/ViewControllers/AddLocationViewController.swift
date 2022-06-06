@@ -13,11 +13,12 @@ class AddLocationViewController: UIViewController {
     //MARK: Outlets
 
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
 
     //MARK: - Properties
 
     lazy var geocoder = CLGeocoder()
-
     var isValidLocation = false
 
     //MARK: Lifecycle Methods
@@ -28,6 +29,11 @@ class AddLocationViewController: UIViewController {
         locationTextField.delegate = self
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.alpha = 1
+        activityIndicator.isHidden = true
+    }
     //MARK: Interaction Methods
 
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -35,8 +41,13 @@ class AddLocationViewController: UIViewController {
     }
 
     @IBAction func findOnTheMapButton(_ sender: UIButton) {
-        let findLocationViewController = self.storyboard?.instantiateViewController(withIdentifier: "FindLocationViewController") as! FindLocationViewController
-        show(findLocationViewController, sender: self)
+
+        if isValidLocation {
+            let findLocationViewController = self.storyboard?.instantiateViewController(withIdentifier: "FindLocationViewController") as! FindLocationViewController
+            show(findLocationViewController, sender: self)
+        } else {
+            Alert.showBasics(title: "Unable to search the entry location", message: "Check your internet connection", vc: self)
+        }
     }
 
     //MARK: Methods
@@ -44,33 +55,39 @@ class AddLocationViewController: UIViewController {
     private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
         guard let locationString = locationTextField.text else { return }
 
-        if let error = error {
-            Alert.showBasics(title: "Invalid location", message: "Try enter a valid location", vc: self)
-            print("Unable to Forward Geocode Address (\(error))")
-            locationTextField.text = ""
-            isValidLocation = false
+        view.alpha = 0.5
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
 
+        if let error = error {
+            isValidLocation = false
+            view.alpha = 1
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+            Alert.showBasics(title: "Invalid location", message: "Try enter a valid location", vc: self)
+            locationTextField.text = ""
+            debugPrint("Unable to Forward Geocode Address (\(error))")
         } else {
             var location: CLLocation?
-
             if let placemarks = placemarks, placemarks.count > 0 {
                 location = placemarks.first?.location
             }
 
             if let location = location {
+                isValidLocation = true
+                view.alpha = 1
+                activityIndicator.isHidden = true
+                activityIndicator.stopAnimating()
                 let coordinate = location.coordinate
                 UserAuthentication.Auth.longitude = coordinate.longitude
                 UserAuthentication.Auth.latitude = coordinate.latitude
-                print("\(coordinate.latitude), \(coordinate.longitude)")
+                debugPrint("\(coordinate.latitude), \(coordinate.longitude)")
                 UserAuthentication.Auth.mapString = locationString
-                isValidLocation = true
             } else {
-                print("No Matching Location Found")
+                debugPrint("No Matching Location Found")
             }
         }
     }
-
-
 }
 
 //MARK: - UITextFieldDelegate

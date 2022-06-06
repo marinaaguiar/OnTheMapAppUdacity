@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C34A361284DFE8500838019 /* StudentsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C34A360284DFE8500838019 /* StudentsData.swift */; };
 		9C3CC3B8283D0D3000E0089B /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */; };
 		9C3CC3BA283D103D00E0089B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3CC3B9283D103D00E0089B /* Alert.swift */; };
 		9C8FD464283D271F00A3520C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FD463283D271F00A3520C /* Error.swift */; };
@@ -16,6 +17,7 @@
 		9C9FB6892835810800595307 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9FB6882835810800595307 /* GameController.framework */; };
 		9C9FB68B2835814900595307 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9FB68A2835814900595307 /* MapKit.framework */; };
 		9CAC28B8283D17C500DF443A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAC28B7283D17C500DF443A /* LoginViewController.swift */; };
+		9CB81BB8284940B8006EB4FD /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB81BB7284940B8006EB4FD /* NetworkService.swift */; };
 		9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7423282D89C90082BE18 /* AppDelegate.swift */; };
 		9CBB7426282D89C90082BE18 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBB7425282D89C90082BE18 /* SceneDelegate.swift */; };
 		9CBB742B282D89C90082BE18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CBB7429282D89C90082BE18 /* Main.storyboard */; };
@@ -39,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C34A360284DFE8500838019 /* StudentsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsData.swift; sourceTree = "<group>"; };
 		9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
 		9C3CC3B9283D103D00E0089B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9C8FD463283D271F00A3520C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		9C9FB6882835810800595307 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
 		9C9FB68A2835814900595307 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9CAC28B7283D17C500DF443A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9CB81BB7284940B8006EB4FD /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		9CBB7420282D89C90082BE18 /* OnTheMapAppUdacity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMapAppUdacity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBB7423282D89C90082BE18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CBB7425282D89C90082BE18 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 		9CBB743C282E684D0082BE18 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				9CB81BB7284940B8006EB4FD /* NetworkService.swift */,
 				9CBB7451282E9D730082BE18 /* UserAuthentication.swift */,
 			);
 			path = Networking;
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF05DF7283FCEBB006F65CD /* StudentModel.swift */,
+				9C34A360284DFE8500838019 /* StudentsData.swift */,
 				9CBB7453282EB0E50082BE18 /* APIResponse */,
 			);
 			path = Model;
@@ -330,10 +336,12 @@
 				9CF05DF8283FCEBB006F65CD /* StudentModel.swift in Sources */,
 				9CBB7442282E694B0082BE18 /* Colors.swift in Sources */,
 				9C8FD464283D271F00A3520C /* Error.swift in Sources */,
+				9CB81BB8284940B8006EB4FD /* NetworkService.swift in Sources */,
 				9CF05DF2283E5A35006F65CD /* UserData.swift in Sources */,
 				9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */,
 				9CBBAA792834044A007EB5BF /* ListTableViewCell.swift in Sources */,
 				9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */,
+				9C34A361284DFE8500838019 /* StudentsData.swift in Sources */,
 				9C9FB6862835395700595307 /* FindLocationViewController.swift in Sources */,
 				9CAC28B8283D17C500DF443A /* LoginViewController.swift in Sources */,
 				9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */,
