@@ -11,7 +11,7 @@ import SafariServices
 class ListTableViewController: UIViewController {
 
     // MARK: Properties
-    var results: [StudentLocation] = []
+    var results = StudentsData.shared.students
     private var isLoading = false
     var itemsCount = UserAuthentication.itemsCounts
 

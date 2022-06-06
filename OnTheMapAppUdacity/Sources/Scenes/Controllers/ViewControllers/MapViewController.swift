@@ -23,7 +23,7 @@ class OTMPointAnnotation: MKPointAnnotation {
 class MapViewController: UIViewController {
 
     // MARK: Properties
-    var results: [StudentLocation] = []
+    var results = StudentsData.shared.students
     var pinsArray: [MKAnnotation] = []
 
     // MARK: Outlets
@@ -31,33 +31,46 @@ class MapViewController: UIViewController {
     @IBOutlet weak var addLocationButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var logOutButton: UIBarButtonItem!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
 
     //MARK: Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        isLoading(true)
         mapView.delegate = self
-
         UserAuthentication.getStudentsLocation { results, error in
-            self.results = results
-            self.populateTheMap(results: results)
+            if results != nil {
+                self.results = results
+                self.populateTheMap(results: results)
+            } else {
+                Alert.showBasics(title: "Failed to load data", message: "\(error?.localizedDescription)", vc: self)
+            }
+            self.isLoading(false)
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         mapView.delegate = self
+        isLoading(true)
+        mapView.removeAnnotations(pinsArray)
+        pinsArray.removeAll()
+        UserAuthentication.getStudentsLocation { [self] results, error in
+            if results != nil {
+                self.results = results
+                self.populateTheMap(results: results)
+            } else {
+                Alert.showBasics(title: "Failed to load data", message: "\(error?.localizedDescription)", vc: self)
+            }
+            self.isLoading(false)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(false)
         tabBarController?.tabBar.isHidden = false
-        mapView.removeAnnotations(pinsArray)
-        pinsArray.removeAll()
-        UserAuthentication.getStudentsLocation { results, error in
-            self.results = results
-            self.populateTheMap(results: results)
-        }
     }
 
     //MARK: Interaction Methods
@@ -90,6 +103,7 @@ class MapViewController: UIViewController {
         } else {
             Alert.showBasics(title: "Logout Failed", message: "\(error?.localizedDescription)", vc: self)
         }
+        isLoading(false)
     }
 
     func presentAlert() {
@@ -116,15 +130,23 @@ class MapViewController: UIViewController {
         }
             mapView.addAnnotations(pinsArray)
     }
+
+    func isLoading(_ status: Bool) {
+        if status {
+            activityIndicator.startAnimating()
+            mapView.alpha = 0.5
+            activityIndicator.isHidden = false
+        } else {
+            mapView.alpha = 1
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+        }
+    }
 }
 
 //MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
-
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        //
-    }
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard

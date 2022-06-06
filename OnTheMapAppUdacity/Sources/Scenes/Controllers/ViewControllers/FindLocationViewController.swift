@@ -18,7 +18,7 @@ class FindLocationViewController: UIViewController {
     let regionInMeters: Double = 10000
     let pin = MKPointAnnotation()
 
-    var results: [StudentLocation] = []
+    var results = StudentsData.shared.students
     var mediaUrl = ""
 
     //MARK: Outlets

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C34A361284DFE8500838019 /* StudentsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C34A360284DFE8500838019 /* StudentsData.swift */; };
 		9C3CC3B8283D0D3000E0089B /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */; };
 		9C3CC3BA283D103D00E0089B /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3CC3B9283D103D00E0089B /* Alert.swift */; };
 		9C8FD464283D271F00A3520C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FD463283D271F00A3520C /* Error.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C34A360284DFE8500838019 /* StudentsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsData.swift; sourceTree = "<group>"; };
 		9C3CC3B7283D0D3000E0089B /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
 		9C3CC3B9283D103D00E0089B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9C8FD463283D271F00A3520C /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF05DF7283FCEBB006F65CD /* StudentModel.swift */,
+				9C34A360284DFE8500838019 /* StudentsData.swift */,
 				9CBB7453282EB0E50082BE18 /* APIResponse */,
 			);
 			path = Model;
@@ -338,6 +341,7 @@
 				9CBBAA732833D601007EB5BF /* MapViewController.swift in Sources */,
 				9CBBAA792834044A007EB5BF /* ListTableViewCell.swift in Sources */,
 				9CBB7452282E9D730082BE18 /* UserAuthentication.swift in Sources */,
+				9C34A361284DFE8500838019 /* StudentsData.swift in Sources */,
 				9C9FB6862835395700595307 /* FindLocationViewController.swift in Sources */,
 				9CAC28B8283D17C500DF443A /* LoginViewController.swift in Sources */,
 				9CBB7424282D89C90082BE18 /* AppDelegate.swift in Sources */,

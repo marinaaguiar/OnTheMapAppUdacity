@@ -97,8 +97,8 @@ class NetworkService {
         completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
-        request.httpBody = try! JSONEncoder().encode(body)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try! JSONEncoder().encode(body)
 
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {

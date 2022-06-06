@@ -139,6 +139,7 @@ class UserAuthentication {
                 Auth.objectId = response.objectId
                 Auth.latitude = latitude
                 Auth.longitude = longitude
+                debugPrint("🟣\(Auth.objectId)")
                 debugPrint("🔵 This is session ID: \(Auth.sessionId)")
                 completion(true, nil)
             } else {
@@ -154,7 +155,7 @@ class UserAuthentication {
         let body = StudentModel(uniqueKey: Auth.uniqueKey, firstName: Auth.firstName, lastName: Auth.lastName, mapString: Auth.mapString, mediaURL: Auth.mediaURL, latitude: latitude, longitude: longitude)
         networkService.put(url: Endpoints.putExistingStudentLocation.url, responseType: PutStudentLocationResponse.self, body: body, completion: { response, error in
             if let response = response {
-                Auth.updatedAt = response.updateAt
+                Auth.updatedAt = response.updatedAt
                 Auth.latitude = latitude
                 Auth.longitude = longitude
                 completion(true, nil)
