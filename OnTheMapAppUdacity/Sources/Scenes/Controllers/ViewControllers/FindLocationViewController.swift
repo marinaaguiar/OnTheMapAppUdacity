@@ -32,18 +32,20 @@ class FindLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         linkTextField.delegate = self
+        mapView.delegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        checkLocationServices()
+        centerViewInUserLocation()
+        addLocationPin(firstName: UserAuthentication.Auth.firstName, lastName: UserAuthentication.Auth.firstName)
     }
 
     //MARK: Interaction Methods
 
     @IBAction func submitButtonPressed(_ sender: Any) {
 
-        if UserAuthentication.Auth.latitude == 0.0 && UserAuthentication.Auth.longitude == 0.0 {
+        if UserAuthentication.Auth.objectId == "" && UserAuthentication.Auth.objectId == "" {
             addNewStudentLocation()
         } else {
             replaceStudentLocation()
@@ -59,8 +61,8 @@ class FindLocationViewController: UIViewController {
     func replaceStudentLocation() {
         UserAuthentication.getUserData(completion: { (success, error) in
             UserAuthentication.putExistingStudentLocation(
-                latitude: self.mapView.centerCoordinate.latitude,
-                longitude: self.mapView.centerCoordinate.longitude,
+                latitude: UserAuthentication.Auth.latitude,
+                longitude: UserAuthentication.Auth.longitude,
                 completion: { (sucess, error) in
                     self.navigationController?.popToRootViewController(animated: true)
                     self.handleLocationSessionResponse(success: success, error: error)
@@ -71,8 +73,8 @@ class FindLocationViewController: UIViewController {
     func addNewStudentLocation() {
         UserAuthentication.getUserData(completion: { (success, error) in
             UserAuthentication.postNewStudentLocation(
-                latitude: self.mapView.centerCoordinate.latitude,
-                longitude: self.mapView.centerCoordinate.longitude,
+                latitude: UserAuthentication.Auth.latitude,
+                longitude: UserAuthentication.Auth.longitude,
                 completion: { (success, error) in
                     self.navigationController?.popToRootViewController(animated: true)
                     self.handleLocationSessionResponse(success: success, error: error)
@@ -80,54 +82,14 @@ class FindLocationViewController: UIViewController {
         })
     }
 
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-        } else {
-            showAlert(title: "Allow Location Services", message: "Turn on Location Services in Settings > Privacy to allow 'On The Map' to determine your current location")
-        }
-    }
-
-    func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-
-    func checkLocationAuthorization() {
-        switch locationManager.authorizationStatus {
-        case .authorizedWhenInUse:
-            mapView.showsUserLocation = true
-            centerViewInUserLocation()
-            locationManager.startUpdatingLocation()
-        case .denied, .restricted:
-            showAlert(title: "Allow Location Services", message: "Turn on Location Services in \n Settings > Privacy to allow \n \"On The Map\" to determine your current location")
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .authorizedAlways:
-            debugPrint("authorizedAlways")
-        @unknown default:
-            debugPrint("unkown")
-        }
-    }
-
     func centerViewInUserLocation() {
         let userLocation = CLLocationCoordinate2D(latitude: UserAuthentication.Auth.latitude, longitude: UserAuthentication.Auth.longitude)
-        if let location = locationManager.location?.coordinate {
-
-            if UserAuthentication.Auth.latitude == 0 && UserAuthentication.Auth.longitude == 0 {
-                let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-                mapView.setRegion(region, animated: true)
-            } else {
-                let region = MKCoordinateRegion.init(center: userLocation, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-                mapView.setRegion(region, animated: true)
-            }
-        }
+        let region = MKCoordinateRegion.init(center: userLocation, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
     }
 
     func handleLocationSessionResponse(success: Bool, error: Error?) {
         if success {
-            addLocationPin(firstName: UserAuthentication.Auth.firstName, lastName: UserAuthentication.Auth.firstName)
             debugPrint("🟢\(UserAuthentication.Auth.firstName)")
         } else {
             debugPrint("🔴 ERROR IS HERE >> \(error?.localizedDescription)")
@@ -135,14 +97,13 @@ class FindLocationViewController: UIViewController {
     }
 
     func addLocationPin(firstName: String?, lastName: String?) {
-
-        mapView.delegate = self
-
         guard let firstName = firstName, let lastName = lastName else { return }
-
         pin.title = "\(firstName) \(lastName)"
         pin.subtitle = UserAuthentication.Auth.mediaURL
-        pin.coordinate = CLLocationCoordinate2D(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        pin.coordinate = CLLocationCoordinate2D(
+            latitude: UserAuthentication.Auth.latitude,
+            longitude: UserAuthentication.Auth.longitude
+        )
         mapView.addAnnotation(pin)
     }
 
@@ -205,10 +166,6 @@ extension FindLocationViewController: UITextFieldDelegate {
 
 extension FindLocationViewController: MKMapViewDelegate {
 
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        //
-    }
-
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "myAnnotation") as? MKPinAnnotationView
@@ -224,12 +181,4 @@ extension FindLocationViewController: MKMapViewDelegate {
     }
 }
 
-//MARK: - CLLocationManagerDelegate
-
-extension FindLocationViewController: CLLocationManagerDelegate {
-
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        checkLocationAuthorization()
-    }
-}
 

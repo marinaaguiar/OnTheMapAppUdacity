@@ -90,7 +90,7 @@ class UserAuthentication {
         }
     }
 
-    class func getStudentsLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
+    class func getStudentsLocation(completion: @escaping ([StudentLocation]?, Error?) -> Void) {
         debugPrint(Endpoints.getUsersLocation.url)
         networkService.get(url: Endpoints.getUsersLocation.url, responseType: StudentResults.self) { response, error in
             if let response = response {
