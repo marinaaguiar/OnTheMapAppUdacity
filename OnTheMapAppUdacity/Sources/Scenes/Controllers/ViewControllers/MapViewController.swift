@@ -38,22 +38,12 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        isLoading(true)
         mapView.delegate = self
-        UserAuthentication.getStudentsLocation { results, error in
-            if results != nil {
-                self.results = results
-                self.populateTheMap(results: results)
-            } else {
-                Alert.showBasics(title: "Failed to load data", message: "\(error?.localizedDescription)", vc: self)
-            }
-            self.isLoading(false)
-        }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        mapView.delegate = self
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        tabBarController?.tabBar.isHidden = false
         isLoading(true)
         mapView.removeAnnotations(pinsArray)
         pinsArray.removeAll()
@@ -66,11 +56,6 @@ class MapViewController: UIViewController {
             }
             self.isLoading(false)
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        tabBarController?.tabBar.isHidden = false
     }
 
     //MARK: Interaction Methods
